@@ -55,8 +55,7 @@ def make_character():
 
 def describe_current_location(rows, columns, board, character):
     board_copy = copy.deepcopy(board)
-    character_location = [character["X-coordinate"], character["Y-coordinate"]]
-    print(character_location)
+    character_location = (character["X-coordinate"], character["Y-coordinate"])
     print("\nMap:")
     for row in range(rows):
         grid = []
@@ -68,9 +67,10 @@ def describe_current_location(rows, columns, board, character):
                 board_copy[coordinates] = "S"
             elif board_copy[coordinates] == "Pokecenter":
                 board_copy[coordinates] = "P"
-            if character_location == board_copy[coordinates]:
+            if character_location == coordinates:
                 board_copy[coordinates] = "X"
             grid.append(board_copy[coordinates])
+
         print(grid)
 
 
@@ -182,6 +182,8 @@ def game():
     columns = 5
     board = make_board(rows, columns)
     character = make_character()
+    print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
+          "W represents wild grass where you will encounter enemies\nP represents Pokecenter where you can heal")
     describe_current_location(rows, columns, board, character)
 
 
