@@ -119,6 +119,35 @@ def validate_move(board, character, direction):
     return valid
 
 
+def move_character(character, direction):
+    """
+    Move your character on the board
+
+    :param character: A dictionary of the character's attributes
+    :param direction: A string of the direction the character will be moved
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate",
+                             "Current HP" with valid values
+    :precondition direction: String must be one of "1", "2", "3", "4"
+    :postcondition: Your character is moved on the board according to the direction entered
+    :return: Character is returned with updated dictionary values to reflect the move
+
+    >>> move_character({"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}, "2")
+    {'X-coordinate': 0, 'Y-coordinate': 1, 'Current HP': 5}
+    >>> move_character({"X-coordinate": 2, "Y-coordinate": 3, "Current HP": 5}, "1")
+    {'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 5}
+    """
+    if direction == "1":
+        character["Y-coordinate"] -= 1
+    elif direction == "2":
+        character["Y-coordinate"] += 1
+    elif direction == "3":
+        character["X-coordinate"] += 1
+    else:
+        character["X-coordinate"] -= 1
+
+    return character
+
+
 def game():
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
