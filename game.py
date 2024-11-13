@@ -4,7 +4,7 @@ A01309729
 """
 
 import random
-from locale import format_string
+import copy
 
 
 def make_board(rows, columns):
@@ -74,6 +74,49 @@ def get_user_choice():
         choice = (
             input("Which direction would you like to go to? (Enter 1 for North, 2 for South, 3 for East, 4 for West) "))
     return choice
+
+
+def validate_move(board, character, direction):
+    """
+    Validate if proposed move keeps the character on the board
+
+    :param board: A dictionary of the board's layout
+    :param character: A dictionary of the character's attributes
+    :param direction: A string of the proposed direction to move the character
+    :precondition board: Dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", and have valid
+                         values for all keys
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate",
+                             "Current HP" with valid values
+    :precondition direction: String must be one of "1", "2", "3", "4"
+    :postcondition: A False boolean is generated and then changed to true if the character remains on the board
+    :return: A boolean indicating if the move is valid
+
+    >>> validate_move({(0, 0): "Empty space", (0, 1): "Empty space", (1, 0): "Empty space", (1, 1): "Empty space"}, \
+    {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}, "1")
+    False
+    >>> validate_move({(0, 0): "Empty space", (0, 1): "Empty space", (1, 0): "Empty space", (1, 1): "Empty space"}, \
+    {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}, "2")
+    True
+    """
+    valid = False
+
+    character_copy = copy.deepcopy(character)
+
+    if direction == "1":
+        character_copy["Y-coordinate"] -= 1
+    elif direction == "2":
+        character_copy["Y-coordinate"] += 1
+    elif direction == "3":
+        character_copy["X-coordinate"] += 1
+    else:
+        character_copy["X-coordinate"] -= 1
+
+    move_tuple = (character_copy["X-coordinate"], character_copy["Y-coordinate"])
+
+    if move_tuple in board.keys():
+        valid = True
+
+    return valid
 
 
 def game():
