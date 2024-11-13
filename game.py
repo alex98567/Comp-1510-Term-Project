@@ -53,6 +53,27 @@ def make_character():
         return character
 
 
+def describe_current_location(rows, columns, board, character):
+    board_copy = copy.deepcopy(board)
+    character_location = [character["X-coordinate"], character["Y-coordinate"]]
+    print(character_location)
+    print("\nMap:")
+    for row in range(rows):
+        grid = []
+        for column in range(columns):
+            coordinates = (row, column)
+            if board_copy[coordinates] == "Wild grass":
+                board_copy[coordinates] = "W"
+            elif board_copy[coordinates] == "Safe area":
+                board_copy[coordinates] = "S"
+            elif board_copy[coordinates] == "Pokecenter":
+                board_copy[coordinates] = "P"
+            if character_location == board_copy[coordinates]:
+                board_copy[coordinates] = "X"
+            grid.append(board_copy[coordinates])
+        print(grid)
+
+
 def get_user_choice():
     """
     Decide which direction to move character
@@ -161,6 +182,7 @@ def game():
     columns = 5
     board = make_board(rows, columns)
     character = make_character()
+    describe_current_location(rows, columns, board, character)
 
 
 def main():
