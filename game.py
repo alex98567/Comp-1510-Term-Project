@@ -39,17 +39,17 @@ def make_character():
     if choice == "1":
         print(f"Congratulations! You selected {fire}, the fire type Pokemon.")
         character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Scratch", "Second move":
-                     "none", "Third move": "none"}
+                     "none", "Third move": "none", "Level": 1}
         return character
     elif choice == "2":
         print(f"Congratulations! You selected {water}, the water type Pokemon.")
         character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Bite", "Second move":
-                     "none", "Third move": "none"}
+                     "none", "Third move": "none", "Level": 1}
         return character
     elif choice == "3":
         print(f"Congratulations! You selected {grass}, the grass type Pokemon.")
         character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Tackle", "Second move":
-                     "none", "Third move": "none"}
+                     "none", "Third move": "none", "Level": 1}
         return character
 
 
@@ -70,8 +70,12 @@ def describe_current_location(rows, columns, board, character):
             if character_location == coordinates:
                 board_copy[coordinates] = "X"
             grid.append(board_copy[coordinates])
-
         print(grid)
+    print("\n")
+    if character["Level"] == 1:
+        return ("Character is currently located at space " + str(character_location) + "\nCurrent HP is "
+                + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "First move is "
+                + str(character["First move"]))
 
 
 def get_user_choice():
@@ -184,7 +188,7 @@ def game():
     character = make_character()
     print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
           "W represents wild grass where you will encounter enemies\nP represents Pokecenter where you can heal")
-    describe_current_location(rows, columns, board, character)
+    print(describe_current_location(rows, columns, board, character))
 
 
 def main():
