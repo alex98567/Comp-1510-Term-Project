@@ -53,6 +53,29 @@ def make_character():
         return character
 
 
+def get_user_choice():
+    """
+    Decide which direction to move character
+
+    User is prompted to enter a direction to move their character on the board
+
+    :postcondition: User enters input that decides the direction to move the character
+    :return: The direction that the user decided to move the character
+
+    >>> get_user_choice() #doctest: +SKIP
+    '1'
+    >>> get_user_choice() #doctest: +SKIP
+    '2'
+    """
+    choice = (input("Which direction would you like to go to? "
+                    "(Enter 1 for North, 2 for South, 3 for East, 4 for West) "))
+    while choice not in ["1", "2", "3", "4"]:
+        print("Invalid choice. Please try again.")
+        choice = (
+            input("Which direction would you like to go to? (Enter 1 for North, 2 for South, 3 for East, 4 for West) "))
+    return choice
+
+
 def game():
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
