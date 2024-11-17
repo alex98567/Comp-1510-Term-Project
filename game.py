@@ -123,14 +123,14 @@ def describe_current_location(rows, columns, board, character):
                 "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
                 "move is " + str(character["First move"]))
     if character["Level"] == 2:
-        return ("Character is currently located at space " + str(character_location) + "\nCurrent HP is "
-                + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst move is "
-                + str(character["First move"]) + "\nSecond move is " + str(character["Second move"]))
+        return (str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
+                "move is " + str(character["First move"]) + "\nSecond move is " + str(character["Second move"]))
     if character["Level"] == 3:
-        return ("Character is currently located at space " + str(character_location) + "\nCurrent HP is "
-                + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst move is "
-                + str(character["First move"]) + "\nSecond move is " + str(character["Second move"]) + "\nThird move "
-                "is " + str(character["Third move"]))
+        return ((str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
+                 "move is " + str(character["First move"]) + "\nSecond move is " + str(character["Second move"])) +
+                "\nThird move is " + str(character["Third move"]))
 
 
 def get_user_choice():
@@ -249,6 +249,40 @@ def check_for_foes(board, character):
     return is_foe
 
 
+def attack_1(character):
+    pass
+
+
+def get_opponent_1():
+    foe = chance = random.randint(1, 3)
+    if chance == 1:
+        print("A wild Magicarp has appeared, a water type!")
+        magicarp = {"Name": "Magicarp", "Current HP": 25, "First move": "Splash"}
+        return magicarp
+    if chance == 2:
+        print("A wild Growlithe has appeared, a fire type!")
+        growlithe = {"Name": "Growlithe", "Current HP": 25, "First move": "Roar"}
+        return growlithe
+    if chance == 3:
+        print("A wild Caterpie has appeared, a grass type!")
+        caterpie = {"Name": "Caterpie", "Current HP": 25, "First move": "String shot"}
+        return caterpie
+
+
+def choose_attack_1(character):
+    print("Press 1 to use " + str(character["First move"]))
+
+
+def validate_attack_1():
+    pass
+
+
+def battle_1(character):
+    opponent = get_opponent_1()
+
+
+
+
 def is_alive(character):
     return character["Current HP"] != 0
 
@@ -280,7 +314,8 @@ def game():
             if character["X-coordinate"] and character["Y-coordinate"] in wild_grass_spaces:
                 there_is_a_foe = check_for_foes(board, character)
                 if there_is_a_foe:
-                    battle(character)
+                    if character["Level"] == 1:
+                        battle_1(character)
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
