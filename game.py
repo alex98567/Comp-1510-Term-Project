@@ -120,16 +120,16 @@ def describe_current_location(rows, columns, board, character):
     print("\n")
     if character["Level"] == 1:
         return (str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
-                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "Current "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nCurrent "
                 "XP is " + str(character["Current XP"]) + "\nFirst move is " + str(character["First move"]))
     if character["Level"] == 2:
         return (str(character["Pokemon"]) + " is currently at space " + str(character_location) + "\nCurrent "
-                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "Current "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nCurrent "
                 "XP is " + str(character["Current XP"]) + "\nFirst move is " + str(character["First move"]) +
                 "\nSecond move is " + str(character["Second move"]))
     if character["Level"] == 3:
         return ((str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
-                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "Current "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nCurrent "
                  "XP is " + str(character["Current XP"]) + "\nFirst move is " + str(character["First move"]) +
                  "\nSecond move is " + str(character["Second move"])) + "\nThird move is "
                 + str(character["Third move"]))
@@ -268,7 +268,8 @@ def get_opponent_1():
 
 
 def choose_attack_1(character):
-    attack = input("Press 1 to use " + str(character["First move"]) + " ")
+    attack = input("Press 1 to use " + str(character["First move"]) + ". An incorrent entry will cause your attack to "
+                   "miss ")
     return attack
 
 
@@ -277,7 +278,7 @@ def validate_attack_1(attack):
 
 
 def opponent_is_alive(opponent):
-    return opponent["Current HP"] != 0
+    return opponent["Current HP"] >= 0
 
 
 def battle_1(character):
@@ -285,24 +286,25 @@ def battle_1(character):
     while is_alive(character) and opponent_is_alive(opponent):
         if is_alive(character):
             attack = choose_attack_1(character)
-            valid_attack = str(validate_attack_1(attack))
+            valid_attack = validate_attack_1(attack)
             if valid_attack:
                 print("You used " + str(character["First move"]) + " and it did 5 damage!")
                 opponent["Current HP"] -= 5
                 print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
             else:
-                print("Invalid move! Please try again.")
+                print("Oh no! Your attack has missed!")
             if opponent_is_alive(opponent):
                 print("Opponent uses " + str(opponent["First move"]) + " and it did 3 damage!")
                 character["Current HP"] -= 3
                 print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
             else:
-                print("Congratulations! You defeated the " + opponent["Name"] + " and gained 10 xp points")
+                print("Congratulations! You defeated the " + opponent["Name"] + " and gained 10 XP points")
+                character["Current XP"] += 10
                 return character
 
 
 def is_alive(character):
-    return character["Current HP"] != 0
+    return character["Current HP"] >= 0
 
 
 def game():
@@ -338,6 +340,8 @@ def game():
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
+    if not is_alive(character):
+        print("Sorry but your Pokemon has fainted. Game Over!")
 
 
 def main():
