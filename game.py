@@ -84,18 +84,18 @@ def make_character():
         choice = (input("Enter 1 to choose Charmander, 2 to choose Squirtle, or 3 to choose Bulbasaur. "))
     if choice == "1":
         print(f"Congratulations! You selected {is_fire_1()}, the fire type Pokemon.")
-        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Scratch", "Second move":
-                     "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}
+        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0, "First move": "Scratch",
+                     "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}
         return character
     elif choice == "2":
         print(f"Congratulations! You selected {is_water_1()}, the water type Pokemon.")
-        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Bite", "Second move":
-                     "none", "Third move": "none", "Level": 1, "Pokemon": is_water_1()}
+        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0, "First move": "Bite",
+                     "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_water_1()}
         return character
     elif choice == "3":
         print(f"Congratulations! You selected {is_grass_1()}, the grass type Pokemon.")
-        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Tackle", "Second move":
-                     "none", "Third move": "none", "Level": 1, "Pokemon": is_grass_1()}
+        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0,  "First move": "Tackle",
+                     "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_grass_1()}
         return character
 
 
@@ -106,7 +106,7 @@ def describe_current_location(rows, columns, board, character):
     for row in range(rows):
         grid = []
         for column in range(columns):
-            coordinates = (row, column)
+            coordinates = (column, row)
             if board_copy[coordinates] == "Wild grass":
                 board_copy[coordinates] = "W"
             elif board_copy[coordinates] == "Safe area":
@@ -120,17 +120,19 @@ def describe_current_location(rows, columns, board, character):
     print("\n")
     if character["Level"] == 1:
         return (str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
-                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
-                "move is " + str(character["First move"]))
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "Current "
+                "XP is " + str(character["Current XP"]) + "\nFirst move is " + str(character["First move"]))
     if character["Level"] == 2:
-        return (str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
-                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
-                "move is " + str(character["First move"]) + "\nSecond move is " + str(character["Second move"]))
+        return (str(character["Pokemon"]) + " is currently at space " + str(character_location) + "\nCurrent "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "Current "
+                "XP is " + str(character["Current XP"]) + "\nFirst move is " + str(character["First move"]) +
+                "\nSecond move is " + str(character["Second move"]))
     if character["Level"] == 3:
         return ((str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
-                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
-                 "move is " + str(character["First move"]) + "\nSecond move is " + str(character["Second move"])) +
-                "\nThird move is " + str(character["Third move"]))
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "Current "
+                 "XP is " + str(character["Current XP"]) + "\nFirst move is " + str(character["First move"]) +
+                 "\nSecond move is " + str(character["Second move"])) + "\nThird move is "
+                + str(character["Third move"]))
 
 
 def get_user_choice():
@@ -238,7 +240,7 @@ def check_if_ready_for_final_boss(character, rows, columns):
     return time_for_boss
 
 
-def check_for_foes(board, character):
+def check_for_foes():
     is_foe = True
 
     chance = random.randint(1, 4)
@@ -249,12 +251,8 @@ def check_for_foes(board, character):
     return is_foe
 
 
-def attack_1(character):
-    pass
-
-
 def get_opponent_1():
-    foe = chance = random.randint(1, 3)
+    chance = random.randint(1, 3)
     if chance == 1:
         print("A wild Magicarp has appeared, a water type!")
         magicarp = {"Name": "Magicarp", "Current HP": 25, "First move": "Splash"}
@@ -270,17 +268,37 @@ def get_opponent_1():
 
 
 def choose_attack_1(character):
-    print("Press 1 to use " + str(character["First move"]))
+    attack = input("Press 1 to use " + str(character["First move"]) + " ")
+    return attack
 
 
-def validate_attack_1():
-    pass
+def validate_attack_1(attack):
+    return attack == "1"
+
+
+def opponent_is_alive(opponent):
+    return opponent["Current HP"] != 0
 
 
 def battle_1(character):
     opponent = get_opponent_1()
-
-
+    while is_alive(character) and opponent_is_alive(opponent):
+        if is_alive(character):
+            attack = choose_attack_1(character)
+            valid_attack = str(validate_attack_1(attack))
+            if valid_attack:
+                print("You used " + str(character["First move"]) + " and it did 5 damage!")
+                opponent["Current HP"] -= 5
+                print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+            else:
+                print("Invalid move! Please try again.")
+            if opponent_is_alive(opponent):
+                print("Opponent uses " + str(opponent["First move"]) + " and it did 3 damage!")
+                character["Current HP"] -= 3
+                print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+            else:
+                print("Congratulations! You defeated the " + opponent["Name"] + " and gained 10 xp points")
+                return character
 
 
 def is_alive(character):
@@ -311,8 +329,9 @@ def game():
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
-            if character["X-coordinate"] and character["Y-coordinate"] in wild_grass_spaces:
-                there_is_a_foe = check_for_foes(board, character)
+            character_location = (character["X-coordinate"], character["Y-coordinate"])
+            if character_location in wild_grass_spaces:
+                there_is_a_foe = check_for_foes()
                 if there_is_a_foe:
                     if character["Level"] == 1:
                         battle_1(character)
