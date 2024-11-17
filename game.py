@@ -43,6 +43,16 @@ def is_grass_3():
     return "Venasaur"
 
 
+def get_list_of_wild_grass(board, rows, columns):
+    spaces_to_check_for_foe = []
+    for row in range(rows):
+        for column in range(columns):
+            coordinates = (row, column)
+            if "W" in board[coordinates]:
+                spaces_to_check_for_foe.append(coordinates)
+    return spaces_to_check_for_foe
+
+
 def make_board(rows, columns):
     board = {}
     for row in range(rows):
@@ -53,6 +63,7 @@ def make_board(rows, columns):
                 board[coordinates] = "Safe area"
             else:
                 board[coordinates] = "Wild grass"
+
             board[0, 0] = "Safe area"
             board[2, 2] = "Pokecenter"
             board[4, 4] = "Safe area"
@@ -227,6 +238,10 @@ def check_if_ready_for_final_boss(character, rows, columns):
     return time_for_boss
 
 
+def check_for_foes(board, character):
+    pass
+
+
 def is_alive(character):
     return character["Current HP"] != 0
 
@@ -243,12 +258,22 @@ def game():
     rows = 5
     columns = 5
     board = make_board(rows, columns)
+    wild_grass_spaces = get_list_of_wild_grass(board, rows, columns)
     character = make_character()
     time_for_boss = False
     while is_alive(character) and not time_for_boss:
         print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
               "W represents wild grass where you will encounter enemies\nP represents Pokecenter where you can heal")
         print(describe_current_location(rows, columns, board, character))
+        print("\n")
+        direction = get_user_choice()
+        valid_move = validate_move(board, character, direction)
+        if valid_move:
+            move_character(character, direction)
+            if character["X-coordinate"] and character["Y-coordinate"] in wild_grass_spaces:
+                pass
+        else:
+            print("Invalid move. This would put you out of bounds. Please try again.")
 
 
 def main():
