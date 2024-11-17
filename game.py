@@ -239,7 +239,14 @@ def check_if_ready_for_final_boss(character, rows, columns):
 
 
 def check_for_foes(board, character):
-    pass
+    is_foe = True
+
+    chance = random.randint(1, 4)
+
+    if chance == 1:
+        is_foe = False
+
+    return is_foe
 
 
 def is_alive(character):
@@ -252,7 +259,7 @@ def game():
           "select the Pokemon that you want to control.\nYour Pokemon will start at level 1 and will evolve when you "
           "reach levels 2 and 3.\nOnce you reach level 3, you can challenge the Pokemon master by progressing to the "
           "bottom right of the board.\nEach space on the board has been randomly designated as a safe area or contains "
-          "wild grass.\nWild grass contains wild Pokemon that can be defeated for experience, which helps you level "
+          "wild grass.\nWild grass may contain wild Pokemon that can be defeated for experience, which helps you level "
           "up.\nIn the center of the board is a PokeCenter. Stepping on this space will replenish your Pokemon to full "
           "health.\nYou will learn more in time. For now, it's time to select your Pokemon!\n")
     rows = 5
@@ -271,7 +278,10 @@ def game():
         if valid_move:
             move_character(character, direction)
             if character["X-coordinate"] and character["Y-coordinate"] in wild_grass_spaces:
-                pass
+                there_is_a_foe = check_for_foes(board, character)
+                if there_is_a_foe:
+                    battle(character)
+            time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
 
