@@ -217,6 +217,16 @@ def move_character(character, direction):
     return character
 
 
+def check_if_ready_for_final_boss(character, rows, columns):
+    time_for_boss = False
+
+    if (character["X-coordinate"] == (columns - 1) and character["Y-coordinate"] == (rows - 1) and
+            character["Level"] == 3):
+        time_for_boss = True
+
+    return time_for_boss
+
+
 def game():
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
@@ -230,9 +240,11 @@ def game():
     columns = 5
     board = make_board(rows, columns)
     character = make_character()
+    achieved_goal = False
     print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
           "W represents wild grass where you will encounter enemies\nP represents Pokecenter where you can heal")
     print(describe_current_location(rows, columns, board, character))
+
 
 
 def main():
