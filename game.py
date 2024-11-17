@@ -7,6 +7,42 @@ import random
 import copy
 
 
+def is_fire_1():
+    return "Charmander"
+
+
+def is_fire_2():
+    return "Charmeleon"
+
+
+def is_fire_3():
+    return "Charizard"
+
+
+def is_water_1():
+    return "Squirtle"
+
+
+def is_water_2():
+    return "Warturtle"
+
+
+def is_water_3():
+    return "Blastoise"
+
+
+def is_grass_1():
+    return "Bulbasaur"
+
+
+def is_grass_2():
+    return "Ivysaur"
+
+
+def is_grass_3():
+    return "Venasaur"
+
+
 def make_board(rows, columns):
     board = {}
     for row in range(rows):
@@ -17,15 +53,14 @@ def make_board(rows, columns):
                 board[coordinates] = "Safe area"
             else:
                 board[coordinates] = "Wild grass"
+            board[0, 0] = "Safe area"
             board[2, 2] = "Pokecenter"
+            board[4, 4] = "Safe area"
 
     return board
 
 
 def make_character():
-    fire = "Charmander"
-    water = "Squirtle"
-    grass = "Bulbasaur"
     choice = (input("You get a choice between 3 unique Pokemon on your journey.\nThere is Charmander: the fire type "
                     "Pokemon, Squirtle: the water type Pokemon, and Bulbasaur: the grass type Pokemon.\nFire is weak "
                     "to water and strong against grass. Grass is weak to fire and strong against water. Water is weak "
@@ -37,19 +72,19 @@ def make_character():
         print("This is not a valid selection.\n")
         choice = (input("Enter 1 to choose Charmander, 2 to choose Squirtle, or 3 to choose Bulbasaur. "))
     if choice == "1":
-        print(f"Congratulations! You selected {fire}, the fire type Pokemon.")
+        print(f"Congratulations! You selected {is_fire_1()}, the fire type Pokemon.")
         character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Scratch", "Second move":
-                     "none", "Third move": "none", "Level": 1}
+                     "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}
         return character
     elif choice == "2":
-        print(f"Congratulations! You selected {water}, the water type Pokemon.")
+        print(f"Congratulations! You selected {is_water_1()}, the water type Pokemon.")
         character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Bite", "Second move":
-                     "none", "Third move": "none", "Level": 1}
+                     "none", "Third move": "none", "Level": 1, "Pokemon": is_water_1()}
         return character
     elif choice == "3":
-        print(f"Congratulations! You selected {grass}, the grass type Pokemon.")
+        print(f"Congratulations! You selected {is_grass_1()}, the grass type Pokemon.")
         character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "First move": "Tackle", "Second move":
-                     "none", "Third move": "none", "Level": 1}
+                     "none", "Third move": "none", "Level": 1, "Pokemon": is_grass_1()}
         return character
 
 
@@ -73,9 +108,18 @@ def describe_current_location(rows, columns, board, character):
         print(grid)
     print("\n")
     if character["Level"] == 1:
+        return (str(character["Pokemon"]) + " is currently located at space " + str(character_location) + "\nCurrent "
+                "HP is " + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst "
+                "move is " + str(character["First move"]))
+    if character["Level"] == 2:
         return ("Character is currently located at space " + str(character_location) + "\nCurrent HP is "
-                + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "First move is "
-                + str(character["First move"]))
+                + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst move is "
+                + str(character["First move"]) + "\nSecond move is " + str(character["Second move"]))
+    if character["Level"] == 3:
+        return ("Character is currently located at space " + str(character_location) + "\nCurrent HP is "
+                + str(character["Current HP"]) + "\nCurrent level is " + str(character["Level"]) + "\nFirst move is "
+                + str(character["First move"]) + "\nSecond move is " + str(character["Second move"]) + "\nThird move "
+                "is " + str(character["Third move"]))
 
 
 def get_user_choice():
