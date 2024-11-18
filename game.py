@@ -475,6 +475,10 @@ def is_level_2(character):
     return character["Current XP"] >= 20
 
 
+def is_level_3(character):
+    return character["Current XP"] >= 60
+
+
 def evolve_level_2(character):
     if character["Pokemon"] == is_fire_1():
         character["Pokemon"] = is_fire_2()
@@ -565,6 +569,8 @@ def game():
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
+    if is_level_3(character):
+        evolve_level_3(character)
     if not is_alive(character):
         print("Sorry but your Pokemon has fainted. Game Over!")
 
