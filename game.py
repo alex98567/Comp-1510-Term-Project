@@ -399,28 +399,28 @@ def battle_2(character):
                 print("Oh no! Your attack has missed!")
             if opponent_is_alive(opponent):
                 if character["Pokemon"] == is_fire_2() and str(opponent["Name"]) == "Vaporeon":
-                    print("Opponent uses " + str(opponent["First move"]) + " and it's super effective! It did 10 "
+                    print("Opponent uses " + str(opponent["First move"]) + ", it's super effective! It did 10 "
                           "damage!")
                     character["Current HP"] -= 10
                     if character["Current HP"] < 0:
                         character["Current HP"] = 0
                     print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
                 elif character["Pokemon"] == is_fire_2() and str(opponent["Name"]) == "Leafeon":
-                    print("Opponent uses " + str(opponent["First move"]) + " but it's not very effective! It did 6 "
+                    print("Opponent used " + str(opponent["First move"]) + " but it's not very effective! It did 6 "
                           "damage!")
                     character["Current HP"] -= 6
                     if character["Current HP"] < 0:
                         character["Current HP"] = 0
                     print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
                 elif character["Pokemon"] == is_water_2() and str(opponent["Name"]) == "Leafeon":
-                    print("Opponent uses " + str(opponent["First move"]) + " and it's super effective! It did 10 "
+                    print("Opponent has used " + str(opponent["First move"]) + " and it's super effective! It did 10 "
                           "damage!")
                     character["Current HP"] -= 10
                     if character["Current HP"] < 0:
                         character["Current HP"] = 0
                     print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
                 elif character["Pokemon"] == is_water_2() and str(opponent["Name"]) == "Flareon":
-                    print("Opponent uses " + str(opponent["First move"]) + " but it's not very effective! It did 6 "
+                    print("Opponent uses " + str(opponent["First move"]) + ", but it's not very effective! It did 6 "
                           "damage!")
                     character["Current HP"] -= 6
                     if character["Current HP"] < 0:
@@ -481,7 +481,8 @@ def evolve_level_2(character):
         character["Second move"] = "Ember"
         character["Current HP"] = 100
         character["Level"] = 2
-        print("Wow! You reached level 2 and your " + str(is_fire_1()) + " has evolved into a " + str(is_fire_2()) + "!")
+        print("\nWow! You reached level 2 and your " + str(is_fire_1()) + " has evolved into a " + str(is_fire_2()) +
+              "!")
         print(str(is_fire_2()) + " learned ember, a fire type move! Remember what you have learned about move types.")
         print(str(is_fire_2()) + " now has 100 HP instead of 50.")
     elif character["Pokemon"] == is_grass_1():
@@ -489,7 +490,7 @@ def evolve_level_2(character):
         character["Second move"] = "Vine whip"
         character["Current HP"] = 100
         character["Level"] = 2
-        print("Wow! You reached level 2 and your " + str(is_grass_1()) + " has evolved into an " + str(is_grass_2()) +
+        print("\nWow! You reached level 2 and your " + str(is_grass_1()) + " has evolved into an " + str(is_grass_2()) +
               "!")
         print(str(is_grass_2()) + " learned vine whip, a grass type move! Remember what you have learned about move "
                                   "types.")
@@ -499,7 +500,7 @@ def evolve_level_2(character):
         character["Second move"] = "Water gun"
         character["Current HP"] = 100
         character["Level"] = 2
-        print("Wow! You reached level 2 and your " + str(is_water_1()) + " has evolved into a " + str(is_water_2()) +
+        print("\nWow! You reached level 2 and your " + str(is_water_1()) + " has evolved into a " + str(is_water_2()) +
               "!")
         print(str(is_water_2()) + " learned water gun, a water type move! Remember what you have learned about move "
                                   "types.")
