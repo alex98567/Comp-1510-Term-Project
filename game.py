@@ -514,6 +514,44 @@ def evolve_level_2(character):
     return character
 
 
+def evolve_level_3(character):
+    if character["Pokemon"] == is_fire_2():
+        character["Pokemon"] = is_fire_3()
+        character["Third move"] = "Fire blast"
+        character["Current HP"] = 150
+        character["Level"] = 3
+        print("\nWow! You reached level 3 and your " + str(is_fire_2()) + " has evolved into a " + str(is_fire_3()) +
+              "!")
+        print(str(is_fire_3()) + " learned Fire blast, a fire type move! Remember what you have learned about move "
+                                 "types.")
+        print(str(is_fire_3()) + " now has 150 HP instead of 10.")
+    elif character["Pokemon"] == is_grass_2():
+        character["Pokemon"] = is_grass_3()
+        character["Second move"] = "Solarbeam"
+        character["Current HP"] = 150
+        character["Level"] = 3
+        print("\nWow! You reached level 3 and your " + str(is_grass_2()) + " has evolved into a " + str(is_grass_3()) +
+              "!")
+        print(str(is_grass_2()) + " learned Solarbeam, a grass type move! Remember what you have learned about move "
+                                  "types.")
+        print(str(is_grass_2()) + " now has 150 HP instead of 100.")
+    elif character["Pokemon"] == is_water_2():
+        character["Pokemon"] = is_water_3()
+        character["Second move"] = "Hydro pump"
+        character["Current HP"] = 150
+        character["Level"] = 3
+        print("\nWow! You reached level 3 and your " + str(is_water_2()) + " has evolved into a " + str(is_water_3()) +
+              "!")
+        print(str(is_water_2()) + " learned Hydro pump, a water type move! Remember what you have learned about move "
+                                  "types.")
+        print(str(is_water_2()) + " now has 150 HP instead of 100.")
+    print(str(character["First move"]) + " still does 8 damage while " + str(character["Second move"]) + " naturally "
+          "does 10 damage. It will do 13 damage when super effective and only 7 damage when not very effective."
+          + str(character["Third move"]) + " naturally does 15 damage. It will do 25 damage when super very effective, "
+          "but will only do 5 damage when not very effective so use this move wisely!")
+    return character
+
+
 def game():
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
