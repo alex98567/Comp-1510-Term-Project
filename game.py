@@ -268,7 +268,7 @@ def get_opponent_1():
 
 
 def choose_attack_1(character):
-    attack = input("Press 1 to use " + str(character["First move"]) + ". An incorrent entry will cause your attack to "
+    attack = input("Press 1 to use " + str(character["First move"]) + ". An incorrect entry will cause your attack to "
                    "miss ")
     return attack
 
@@ -321,6 +321,12 @@ def get_opponent_2():
         print("A wild Leafeon has appeared, a grass type! Be careful, this pokemon uses a grass move")
         leafeon = {"Leafeon": "Caterpie", "Current HP": 60, "First move": "Razor leaf"}
         return leafeon
+
+
+def choose_attack_2(character):
+    attack = input("Press 1 to use " + str(character["First move"]) + " or 2 to use " + str(character["Second move"]) +
+                   ". An incorrect entry will cause your attack to miss ")
+    return attack
 
 
 def is_alive(character):
