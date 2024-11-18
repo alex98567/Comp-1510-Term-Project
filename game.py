@@ -349,6 +349,13 @@ def get_opponent_3():
         return groudon
 
 
+def choose_attack_3(character):
+    attack = input("Press 1 to use " + str(character["First move"]) + ", 2 to use " + str(character["Second move"]) +
+                   ", or 3 to use " + str(character["Third move"]) + ". An incorrect entry will cause your attack to "
+                   "miss.")
+    return attack
+
+
 def battle_2(character):
     opponent = get_opponent_2()
     while is_alive(character) and opponent_is_alive(opponent):
