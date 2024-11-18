@@ -668,7 +668,7 @@ def is_pokecenter(character):
 
 
 def is_level_2(character):
-    return character["Current XP"] >= 20
+    return character["Current XP"] in range(20, 59)
 
 
 def is_level_3(character):
@@ -742,7 +742,7 @@ def evolve_level_3(character):
                                   "types.")
         print(str(is_water_2()) + " now has 150 HP instead of 100.")
     print(str(character["First move"]) + " still does 8 damage while " + str(character["Second move"]) + " naturally "
-          "does 10 damage. It will do 13 damage when super effective and only 7 damage when not very effective."
+          "does 10 damage. It will do 13 damage when super effective and only 7 damage when not very effective.\n"
           + str(character["Third move"]) + " naturally does 15 damage. It will do 25 damage when super very effective, "
           "but will only do 5 damage when not very effective so use this move wisely!")
     return character
@@ -803,8 +803,8 @@ def game():
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
-    if is_level_3(character):
-        evolve_level_3(character)
+        if is_level_3(character):
+            evolve_level_3(character)
     while is_alive(character) and not time_for_boss and is_level_3(character):
         print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
               "W represents wild grass where you MIGHT encounter enemies\nP represents Pokecenter where you can heal. "
@@ -822,7 +822,7 @@ def game():
             if character_location in wild_grass_spaces:
                 there_is_a_foe = check_for_foes()
                 if there_is_a_foe:
-                    battle_2(character)
+                    battle_3(character)
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
