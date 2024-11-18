@@ -278,7 +278,7 @@ def validate_attack_1(attack):
 
 
 def opponent_is_alive(opponent):
-    return opponent["Current HP"] >= 0
+    return opponent["Current HP"] > 0
 
 
 def battle_1(character):
@@ -307,6 +307,21 @@ def is_alive(character):
     return character["Current HP"] >= 0
 
 
+def is_pokecenter(character):
+    if character["Level"] == 1 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
+        character["Current HP"] = 50
+        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        return character
+    if character["Level"] == 2 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
+        character["Current HP"] = 75
+        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        return character
+    if character["Level"] == 3 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
+        character["Current HP"] = 100
+        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        return character
+
+
 def game():
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
@@ -331,6 +346,7 @@ def game():
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
+            is_pokecenter(character)
             character_location = (character["X-coordinate"], character["Y-coordinate"])
             if character_location in wild_grass_spaces:
                 there_is_a_foe = check_for_foes()
