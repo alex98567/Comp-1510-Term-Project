@@ -290,17 +290,21 @@ def battle_1(character):
             if valid_attack:
                 print("You used " + str(character["First move"]) + " and it did 5 damage!")
                 opponent["Current HP"] -= 5
+                if opponent["Current HP"] < 0:
+                    opponent["Current HP"] = 0
                 print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
             else:
                 print("Oh no! Your attack has missed!")
             if opponent_is_alive(opponent):
                 print("Opponent uses " + str(opponent["First move"]) + " and it did 3 damage!")
                 character["Current HP"] -= 3
+                if character["Current HP"] < 0:
+                    character["Current HP"] = 0
                 print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
             else:
                 print("Congratulations! You defeated the " + opponent["Name"] + " and gained 10 XP points")
                 character["Current XP"] += 10
-                return character
+    return character
 
 
 def is_alive(character):
@@ -330,22 +334,31 @@ def evolve_level_2(character):
     if character["Pokemon"] == is_fire_1():
         character["Pokemon"] = is_fire_2()
         character["Second move"] = "Ember"
+        character["Current HP"] = 100
+        character["Level"] = 2
         print("Wow! You reached level 2 and your " + str(is_fire_1()) + " has evolved into a " + str(is_fire_2()) + "!")
         print(str(is_fire_2()) + " learned ember, a fire type move! Remember what you have learned about move types.")
-    if character["Pokemon"] == is_grass_1():
+        print(str(is_fire_2()) + " now has 100 HP instead of 50.")
+    elif character["Pokemon"] == is_grass_1():
         character["Pokemon"] = is_grass_2()
         character["Second move"] = "Vine whip"
+        character["Current HP"] = 100
+        character["Level"] = 2
         print("Wow! You reached level 2 and your " + str(is_grass_1()) + " has evolved into an " + str(is_grass_2()) +
               "!")
-        print(str(is_fire_2()) + " learned vine whip, a grass type move! Remember what you have learned about move "
-                                 "types.")
-    if character["Pokemon"] == is_water_1():
+        print(str(is_grass_2()) + " learned vine whip, a grass type move! Remember what you have learned about move "
+                                  "types.")
+        print(str(is_grass_2()) + " now has 100 HP instead of 50.")
+    elif character["Pokemon"] == is_water_1():
         character["Pokemon"] = is_water_2()
         character["Second move"] = "Water gun"
+        character["Current HP"] = 100
+        character["Level"] = 2
         print("Wow! You reached level 2 and your " + str(is_water_1()) + " has evolved into a " + str(is_water_2()) +
               "!")
-        print(str(is_fire_2()) + " learned water gun, a water type move! Remember what you have learned about move "
-                                 "types.")
+        print(str(is_water_2()) + " learned water gun, a water type move! Remember what you have learned about move "
+                                  "types.")
+        print(str(is_water_2()) + " now has 100 HP instead of 50.")
     return character
 
 
