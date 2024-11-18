@@ -330,7 +330,7 @@ def choose_attack_2(character):
 
 
 def validate_attack_2(attack):
-    return attack == "1" or attack == "2"
+    return attack == "2"
 
 
 def is_alive(character):
