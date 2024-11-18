@@ -332,6 +332,7 @@ def choose_attack_2(character):
 def validate_attack_2(attack):
     return attack == "2"
 
+
 def battle_2(character):
     opponent = get_opponent_2()
     while is_alive(character) and opponent_is_alive(opponent):
@@ -340,42 +341,119 @@ def battle_2(character):
             use_attack_1 = validate_attack_1(attack)
             use_attack_2 = validate_attack_2(attack)
             if use_attack_1:
-                print("You used " + str(character["First move"]) + " and it did 5 damage!")
-                opponent["Current HP"] -= 5
+                print("You used " + str(character["First move"]) + " and it did 8 damage!")
+                opponent["Current HP"] -= 8
                 if opponent["Current HP"] < 0:
                     opponent["Current HP"] = 0
                 print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
             elif use_attack_2:
-                if character["Pokemon"] == is_fire_2() and opponent["Name"] == "Vaporeon":
-                    print("You used " + str(character["First move"]) + " but your fire move is not very effective. "
-                          " it did 7 damage!")
+                if character["Pokemon"] == is_fire_2() and str(opponent["Name"]) == "Vaporeon":
+                    print("You used " + str(character["Second move"]) + " but your fire move is not very effective. "
+                          " It did 7 damage!")
                     opponent["Current HP"] -= 7
                     if opponent["Current HP"] < 0:
                         opponent["Current HP"] = 0
                     print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
-                elif character["Pokemon"] == is_fire_2() and opponent["Name"] == "Leafeon":
-                    print("You used " + str(character["First move"]) + " and your fire move is super effective! "
+                elif character["Pokemon"] == is_fire_2() and str(opponent["Name"]) == "Leafeon":
+                    print("You used " + str(character["Second move"]) + " and your fire move is super effective! "
                           " It did 13 damage!")
                     opponent["Current HP"] -= 13
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_grass_2() and str(opponent["Name"]) == "Flareon":
+                    print("You used " + str(character["Second move"]) + " but your grass move is not very effective. "
+                          " It did 7 damage!")
+                    opponent["Current HP"] -= 7
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_grass_2() and opponent["Name"] == "Vaporeon":
+                    print("You used " + str(character["Second move"]) + " and your grass move is super effective! "
+                          " It did 13 damage!")
+                    opponent["Current HP"] -= 13
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_water_2() and opponent["Name"] == "Leafeon":
+                    print("You used " + str(character["Second move"]) + " but your water move is not very effective. "
+                          " It did 7 damage!")
+                    opponent["Current HP"] -= 7
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_water_2() and opponent["Name"] == "Flareon":
+                    print("You used " + str(character["Second move"]) + " and your water move is super effective! "
+                          " It did 13 damage!")
+                    opponent["Current HP"] -= 13
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+                else:
+                    print("You used " + str(character["Second move"]) + " and it did 10 damage!")
+                    opponent["Current HP"] -= 10
                     if opponent["Current HP"] < 0:
                         opponent["Current HP"] = 0
                     print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
             else:
                 print("Oh no! Your attack has missed!")
             if opponent_is_alive(opponent):
-                print("Opponent uses " + str(opponent["First move"]) + " and it did 3 damage!")
-                character["Current HP"] -= 3
-                if character["Current HP"] < 0:
-                    character["Current HP"] = 0
-                print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                if character["Pokemon"] == is_fire_2() and str(opponent["Name"]) == "Vaporeon":
+                    print("Opponent uses " + str(opponent["First move"]) + " and it's super effective! It did 10 "
+                          "damage!")
+                    character["Current HP"] -= 10
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_fire_2() and str(opponent["Name"]) == "Leafeon":
+                    print("Opponent uses " + str(opponent["First move"]) + " but it's not very effective! It did 6 "
+                          "damage!")
+                    character["Current HP"] -= 6
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_water_2() and str(opponent["Name"]) == "Leafeon":
+                    print("Opponent uses " + str(opponent["First move"]) + " and it's super effective! It did 10 "
+                          "damage!")
+                    character["Current HP"] -= 10
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_water_2() and str(opponent["Name"]) == "Flareon":
+                    print("Opponent uses " + str(opponent["First move"]) + " but it's not very effective! It did 6 "
+                          "damage!")
+                    character["Current HP"] -= 6
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_grass_2() and str(opponent["Name"]) == "Flareon":
+                    print("Opponent uses " + str(opponent["First move"]) + " and it's super effective! It did 10 "
+                          "damage!")
+                    character["Current HP"] -= 10
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_grass_2() and str(opponent["Name"]) == "Vaporeon":
+                    print("Opponent uses " + str(opponent["First move"]) + " but it's not very effective! It did 6 "
+                          "damage!")
+                    character["Current HP"] -= 6
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+                else:
+                    print("Opponent uses " + str(opponent["First move"]) + " and it did 8 damage!")
+                    character["Current HP"] -= 8
+                    if character["Current HP"] < 0:
+                        character["Current HP"] = 0
+                    print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
             else:
-                print("Congratulations! You defeated the " + opponent["Name"] + " and gained 10 XP points")
-                character["Current XP"] += 10
+                print("Congratulations! You defeated the " + opponent["Name"] + " and gained 20 XP points")
+                character["Current XP"] += 20
     return character
 
 
 def is_alive(character):
-    return character["Current HP"] >= 0
+    return character["Current HP"] > 0
 
 
 def is_pokecenter(character):
@@ -384,11 +462,11 @@ def is_pokecenter(character):
         print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
         return character
     if character["Level"] == 2 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
-        character["Current HP"] = 75
+        character["Current HP"] = 100
         print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
         return character
     if character["Level"] == 3 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
-        character["Current HP"] = 100
+        character["Current HP"] = 150
         print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
         return character
 
@@ -426,6 +504,8 @@ def evolve_level_2(character):
         print(str(is_water_2()) + " learned water gun, a water type move! Remember what you have learned about move "
                                   "types.")
         print(str(is_water_2()) + " now has 100 HP instead of 50.")
+    print(str(character["First move"]) + " now does 8 damage while " + str(character["Second move"]) + " naturally "
+          "does 10 damage. It will do 13 damage when super effective and only 7 damage when not very effective.")
     return character
 
 
@@ -480,7 +560,7 @@ def game():
             if character_location in wild_grass_spaces:
                 there_is_a_foe = check_for_foes()
                 if there_is_a_foe:
-                    battle_1(character)
+                    battle_2(character)
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
