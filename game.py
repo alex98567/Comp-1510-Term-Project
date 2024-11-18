@@ -234,7 +234,7 @@ def check_if_ready_for_final_boss(character, rows, columns):
     time_for_boss = False
 
     if (character["X-coordinate"] == (columns - 1) and character["Y-coordinate"] == (rows - 1) and
-            character["Level"] == 3):
+            character["Level"] == 3) and character["Current XP"] >= 500:
         time_for_boss = True
 
     return time_for_boss
@@ -319,7 +319,7 @@ def get_opponent_2():
         return flareon
     if chance == 3:
         print("A wild Leafeon has appeared, a grass type! Be careful, this pokemon uses a grass move")
-        leafeon = {"Leafeon": "Caterpie", "Current HP": 60, "First move": "Razor leaf"}
+        leafeon = {"Name": "Leafeon", "Current HP": 60, "First move": "Razor leaf"}
         return leafeon
 
 
@@ -331,6 +331,22 @@ def choose_attack_2(character):
 
 def validate_attack_2(attack):
     return attack == "2"
+
+
+def get_opponent_3():
+    chance = random.randint(1, 3)
+    if chance == 1:
+        print("A wild Kyogre has appeared, a water type! Be careful, this high level pokemon uses a water move.")
+        kyogre = {"Name": "Kyogre", "Current HP": 120, "First move": "Surf"}
+        return kyogre
+    if chance == 2:
+        print("A wild Entei has appeared, a fire type! Be careful, this high level pokemon uses a fire move.")
+        entei = {"Name": "Entei", "Current HP": 120, "First move": "Flamethrower"}
+        return entei
+    if chance == 3:
+        print("A wild Groudon has appeared, a grass type! Be careful, this high level pokemon uses a grass move")
+        groudon = {"Name": "Groudon", "Current HP": 120, "First move": "Frenzy plant"}
+        return groudon
 
 
 def battle_2(character):
@@ -609,6 +625,30 @@ def game():
             print("Invalid move. This would put you out of bounds. Please try again.")
     if is_level_3(character):
         evolve_level_3(character)
+    while is_alive(character) and not time_for_boss and is_level_3(character):
+        print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
+              "W represents wild grass where you MIGHT encounter enemies\nP represents Pokecenter where you can heal. "
+              "\n500 XP is needed to challenge the Pokemon master. You're so close! Reach the bottom right hand corner "
+              "of the board with 500 XP to challenge the Pokemon master. Your health will be replenished when this "
+              "fight begins.")
+        print(describe_current_location(rows, columns, board, character))
+        print("\n")
+        direction = get_user_choice()
+        valid_move = validate_move(board, character, direction)
+        if valid_move:
+            move_character(character, direction)
+            is_pokecenter(character)
+            character_location = (character["X-coordinate"], character["Y-coordinate"])
+            if character_location in wild_grass_spaces:
+                there_is_a_foe = check_for_foes()
+                if there_is_a_foe:
+                    battle_2(character)
+            time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
+        else:
+            print("Invalid move. This would put you out of bounds. Please try again.")
+    while time_for_boss:
+        pass
+        # battle_boss(character)
     if not is_alive(character):
         print("Sorry but your Pokemon has fainted. Game Over!")
 
