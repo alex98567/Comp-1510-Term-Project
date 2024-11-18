@@ -307,6 +307,22 @@ def battle_1(character):
     return character
 
 
+def get_opponent_2():
+    chance = random.randint(1, 3)
+    if chance == 1:
+        print("A wild Vaporeon has appeared, a water type! Be careful, this pokemon uses a water move.")
+        vaporeon = {"Name": "Vaporeon", "Current HP": 60, "First move": "Bubble"}
+        return vaporeon
+    if chance == 2:
+        print("A wild Flareon has appeared, a fire type! Be careful, this pokemon uses a fire move.")
+        flareon = {"Name": "Flareon", "Current HP": 60, "First move": "Blast burn"}
+        return flareon
+    if chance == 3:
+        print("A wild Leafeon has appeared, a grass type! Be careful, this pokemon uses a grass move")
+        leafeon = {"Leafeon": "Caterpie", "Current HP": 60, "First move": "Razor leaf"}
+        return leafeon
+
+
 def is_alive(character):
     return character["Current HP"] >= 0
 
