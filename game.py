@@ -322,6 +322,33 @@ def is_pokecenter(character):
         return character
 
 
+def is_level_2(character):
+    return character["Current XP"] >= 20
+
+
+def evolve_level_2(character):
+    if character["Pokemon"] == is_fire_1():
+        character["Pokemon"] = is_fire_2()
+        character["Second move"] = "Ember"
+        print("Wow! You reached level 2 and your " + str(is_fire_1()) + " has evolved into a " + str(is_fire_2()) + "!")
+        print(str(is_fire_2()) + " learned ember, a fire type move! Remember what you have learned about move types.")
+    if character["Pokemon"] == is_grass_1():
+        character["Pokemon"] = is_grass_2()
+        character["Second move"] = "Vine whip"
+        print("Wow! You reached level 2 and your " + str(is_grass_1()) + " has evolved into an " + str(is_grass_2()) +
+              "!")
+        print(str(is_fire_2()) + " learned vine whip, a grass type move! Remember what you have learned about move "
+                                 "types.")
+    if character["Pokemon"] == is_water_1():
+        character["Pokemon"] = is_water_2()
+        character["Second move"] = "Water gun"
+        print("Wow! You reached level 2 and your " + str(is_water_1()) + " has evolved into a " + str(is_water_2()) +
+              "!")
+        print(str(is_fire_2()) + " learned water gun, a water type move! Remember what you have learned about move "
+                                 "types.")
+    return character
+
+
 def game():
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
@@ -337,9 +364,10 @@ def game():
     wild_grass_spaces = get_list_of_wild_grass(board, rows, columns)
     character = make_character()
     time_for_boss = False
-    while is_alive(character) and not time_for_boss:
+    while is_alive(character) and not time_for_boss and not is_level_2(character):
         print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
-              "W represents wild grass where you will encounter enemies\nP represents Pokecenter where you can heal")
+              "W represents wild grass where you MIGHT encounter enemies\nP represents Pokecenter where you can heal. "
+              "\n100 XP is needed for level 2.")
         print(describe_current_location(rows, columns, board, character))
         print("\n")
         direction = get_user_choice()
@@ -351,8 +379,28 @@ def game():
             if character_location in wild_grass_spaces:
                 there_is_a_foe = check_for_foes()
                 if there_is_a_foe:
-                    if character["Level"] == 1:
-                        battle_1(character)
+                    battle_1(character)
+            time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
+        else:
+            print("Invalid move. This would put you out of bounds. Please try again.")
+    if is_level_2(character):
+        evolve_level_2(character)
+    while is_alive(character) and not time_for_boss and is_level_2(character):
+        print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
+              "W represents wild grass where you MIGHT encounter enemies\nP represents Pokecenter where you can heal. "
+              "\n400 XP is needed for level 3.")
+        print(describe_current_location(rows, columns, board, character))
+        print("\n")
+        direction = get_user_choice()
+        valid_move = validate_move(board, character, direction)
+        if valid_move:
+            move_character(character, direction)
+            is_pokecenter(character)
+            character_location = (character["X-coordinate"], character["Y-coordinate"])
+            if character_location in wild_grass_spaces:
+                there_is_a_foe = check_for_foes()
+                if there_is_a_foe:
+                    battle_1(character)
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
