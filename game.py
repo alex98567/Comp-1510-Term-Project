@@ -332,6 +332,47 @@ def choose_attack_2(character):
 def validate_attack_2(attack):
     return attack == "2"
 
+def battle_2(character):
+    opponent = get_opponent_2()
+    while is_alive(character) and opponent_is_alive(opponent):
+        if is_alive(character):
+            attack = choose_attack_2(character)
+            use_attack_1 = validate_attack_1(attack)
+            use_attack_2 = validate_attack_2(attack)
+            if use_attack_1:
+                print("You used " + str(character["First move"]) + " and it did 5 damage!")
+                opponent["Current HP"] -= 5
+                if opponent["Current HP"] < 0:
+                    opponent["Current HP"] = 0
+                print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+            elif use_attack_2:
+                if character["Pokemon"] == is_fire_2() and opponent["Name"] == "Vaporeon":
+                    print("You used " + str(character["First move"]) + " but your fire move is not very effective. "
+                          " it did 7 damage!")
+                    opponent["Current HP"] -= 7
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+                elif character["Pokemon"] == is_fire_2() and opponent["Name"] == "Leafeon":
+                    print("You used " + str(character["First move"]) + " and your fire move is super effective! "
+                          " It did 13 damage!")
+                    opponent["Current HP"] -= 13
+                    if opponent["Current HP"] < 0:
+                        opponent["Current HP"] = 0
+                    print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+            else:
+                print("Oh no! Your attack has missed!")
+            if opponent_is_alive(opponent):
+                print("Opponent uses " + str(opponent["First move"]) + " and it did 3 damage!")
+                character["Current HP"] -= 3
+                if character["Current HP"] < 0:
+                    character["Current HP"] = 0
+                print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+            else:
+                print("Congratulations! You defeated the " + opponent["Name"] + " and gained 10 XP points")
+                character["Current XP"] += 10
+    return character
+
 
 def is_alive(character):
     return character["Current HP"] >= 0
