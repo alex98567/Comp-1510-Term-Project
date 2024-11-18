@@ -356,6 +356,10 @@ def choose_attack_3(character):
     return attack
 
 
+def validate_attack_3(attack):
+    return attack == "3"
+
+
 def battle_2(character):
     opponent = get_opponent_2()
     while is_alive(character) and opponent_is_alive(opponent):
