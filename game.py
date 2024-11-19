@@ -234,7 +234,7 @@ def check_if_ready_for_final_boss(character, rows, columns):
     time_for_boss = False
 
     if (character["X-coordinate"] == (columns - 1) and character["Y-coordinate"] == (rows - 1) and
-            character["Level"] == 3) and character["Current XP"] >= 500:
+            character["Level"] == 3) and character["Current XP"] >= 100:
         time_for_boss = True
 
     return time_for_boss
@@ -588,7 +588,8 @@ def battle_3(character):
                         opponent["Current HP"] = 0
                     print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
                 else:
-                    print(str(character["Pokemon"]) + " used " + str(character["Third move"]) + " and it did 15 damage!")
+                    print(str(character["Pokemon"]) + " used " + str(character["Third move"]) + " and it did 15 "
+                          "damage!")
                     opponent["Current HP"] -= 15
                     if opponent["Current HP"] < 0:
                         opponent["Current HP"] = 0
@@ -743,10 +744,60 @@ def evolve_level_3(character):
         print(str(is_water_2()) + " learned Hydro pump, a water type move! Remember what you have learned about move "
                                   "types.")
         print(str(is_water_2()) + " now has 150 HP instead of 100.")
-    print(str(character["First move"]) + " now does 12 damage while " + str(character["Second move"]) + " naturally "
-          "does 13 damage. It will do 16 damage when super effective and only 10 damage when not very effective.\n"
-          + str(character["Third move"]) + " naturally does 15 damage. It will do 25 damage when super very effective, "
-          "but will only do 5 damage when not very effective so use this move wisely!")
+    print(str(character["First move"]) + " now does 12 damage. " + str(character["Second move"]) + " naturally "
+          "does 13 damage, but will do 16 damage when super effective and only 10 damage when not very effective.\n"
+          + str(character["Third move"]) + " naturally does 15 damage.\nIt will do 25 damage when super very "
+          "effective, but will only do 5 damage when not very effective so use this move wisely!")
+    return character
+
+
+def battle_boss(character):
+    print("Your final test awaits! You have done well to get this far and are now challenging the Pokemon master. "
+          "\nHe sends out the legendary Mewtwo! Mewtwo has 150 HP and is a Psychic type. Psychic types have no "
+          "type advantage and all of your moves will do their natural damage. \nOne incorrect move will likely mean "
+          "defeat. Good luck!")
+    mewtwo = {"Name": "Mewtwo", "Current HP": 150, "First move": "Psybeam"}
+    opponent = mewtwo
+    character["Current HP"] = 150
+    while is_alive(character) and opponent_is_alive(opponent):
+        if is_alive(character):
+            attack = choose_attack_3(character)
+            use_attack_1 = validate_attack_1(attack)
+            use_attack_2 = validate_attack_2(attack)
+            use_attack_3 = validate_attack_3(attack)
+            if use_attack_1:
+                print(
+                    str(character["Pokemon"]) + " attacks with " + str(character["First move"]) + " and it did 12 "
+                    "damage!")
+                opponent["Current HP"] -= 12
+                if opponent["Current HP"] < 0:
+                    opponent["Current HP"] = 0
+                print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+            elif use_attack_2:
+                print(
+                    str(character["Pokemon"]) + " used " + str(character["Second move"]) + " and it did 13 damage!")
+                opponent["Current HP"] -= 13
+                if opponent["Current HP"] < 0:
+                    opponent["Current HP"] = 0
+                print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+            elif use_attack_3:
+                print(
+                    str(character["Pokemon"]) + " used " + str(character["Third move"]) + " and it did 15 damage!")
+                opponent["Current HP"] -= 15
+                if opponent["Current HP"] < 0:
+                    opponent["Current HP"] = 0
+                print(str(opponent["Name"]) + " has " + str(opponent["Current HP"]) + " HP")
+            else:
+                print("Oh no! Your attack has missed!")
+            if opponent_is_alive(opponent):
+                print(str(opponent["Name"]) + " uses " + str(opponent["First move"]) + " and it did 15 damage!")
+                character["Current HP"] -= 15
+                if character["Current HP"] < 0:
+                    character["Current HP"] = 0
+                print(str(character["Pokemon"]) + " has " + str(character["Current HP"]) + " HP")
+            else:
+                print("Congratulations! You defeated the " + opponent["Name"] + "!!! You are the new Pokemon master "
+                      "and have completed the game!!")
     return character
 
 
@@ -811,7 +862,7 @@ def game():
         print("\nLegend\nX represents user location\nS represents a safe area where you will not encounter enemies\n"
               "W represents wild grass where you MIGHT encounter enemies\nP represents Pokecenter where you can heal. "
               "\n500 XP is needed to challenge the Pokemon master. You're so close! Reach the bottom right hand corner "
-              "of the board with 500 XP to challenge the Pokemon master. Your health will be replenished when this "
+              "of the board with 500 XP to challenge the Pokemon master. \nYour health will be replenished when this "
               "fight begins.")
         print(describe_current_location(rows, columns, board, character))
         print("\n")
@@ -828,9 +879,8 @@ def game():
             time_for_boss = check_if_ready_for_final_boss(character, rows, columns)
         else:
             print("Invalid move. This would put you out of bounds. Please try again.")
-    while time_for_boss:
-        pass
-        # battle_boss(character)
+    if time_for_boss and is_alive(character):
+        battle_boss(character)
     if not is_alive(character):
         print("Sorry but your Pokemon has fainted. Game Over!")
 
