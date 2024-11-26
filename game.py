@@ -146,18 +146,18 @@ def make_board(rows, columns):
     {(0, 0): 'Safe area', (0, 1): 'Wild grass', (1, 0): 'Safe area', (1, 1): 'Wild grass'}
     """
     board = {}
+    spaces = ["Safe area", "Wild grass"]
     for row in range(rows):
         for column in range(columns):
             coordinates = (row, column)
-            space_selector = random.randint(1, 2)
-            if space_selector == 1:
-                board[coordinates] = "Safe area"
-            else:
-                board[coordinates] = "Wild grass"
+            board[coordinates] = random.choice(spaces)
 
-            board[0, 0] = "Safe area"
-            board[2, 2] = "Pokecenter"
-            board[4, 4] = "Safe area"
+            if rows > 0 and columns > 0:
+                board[0, 0] = "Safe area"
+            if rows > 2 and columns > 2:
+                board[2, 2] = "Pokecenter"
+            if rows > 4 and columns > 4:
+                board[4, 4] = "Safe area"
 
     return board
 
