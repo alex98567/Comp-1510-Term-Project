@@ -111,10 +111,11 @@ def get_list_of_wild_grass(board, rows, columns):
     :postcondition: A list will be generated that contains the key value pairs, which represent coordinates on the
                     board, where an enemy may be encountered
     :return: a list called spaces_to_check_for_foe
-    >>> get_list_of_wild_grass([(0, 0), (0, 1), (1, 0), (1, 1)], 2, 2) #doctest: +SKIP
+    >>> get_list_of_wild_grass({(0, 0): 'S', (0, 1): 'W', (1, 0): 'S', (1, 1): 'W'}, 2, 2)
     [(0, 1), (1, 1)]
-    >>> get_list_of_wild_grass([(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)], 3, 3) #doctest: +SKIP
-    [(0, 1), (0, 2), (1, 1)]
+    >>> get_list_of_wild_grass({(0, 0): 'S', (0, 1): 'W', (0, 2): 'W', (1, 0): 'S', (1, 1): 'W', (1, 2): 'S', \
+    (2, 0): 'S', (2, 1): 'W', (2, 2): 'S'}, 3, 3)
+    [(0, 1), (0, 2), (1, 1), (2, 1)]
     """
     spaces_to_check_for_foe = []
     for row in range(rows):
@@ -126,6 +127,23 @@ def get_list_of_wild_grass(board, rows, columns):
 
 
 def make_board(rows, columns):
+    """
+    Create a board of given number of rows and columns.
+
+    :param rows: a positive non-zero integer
+    :param columns: a positive non-zero integer
+    :precondition rows: rows must be a positive non-zero integer
+    :precondition columns: columns must be a positive non-zero integer
+    :postcondition: create a dictionary of given number of rows and columns stored as keys in board_dictionary
+                    and "Empty Room" stored as the value for each key
+    :return: a dictionary of given number of rows and columns that serves as a board
+
+    >>> make_board(3, 3) #doctest: +SKIP
+    {(0, 0): 'Empty room', (0, 1): 'Empty room', (0, 2): 'Empty room', (1, 0): 'Empty room', (1, 1): 'Empty room', \
+(1, 2): 'Empty room', (2, 0): 'Empty room', (2, 1): 'Empty room', (2, 2): 'Empty room'}
+    >>> make_board(2, 2) #doctest: +SKIP
+    {(0, 0): 'Empty room', (0, 1): 'Empty room', (1, 0): 'Empty room', (1, 1): 'Empty room'}
+    """
     board = {}
     for row in range(rows):
         for column in range(columns):
