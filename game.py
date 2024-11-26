@@ -8,38 +8,92 @@ import copy
 
 
 def is_fire_1():
+    """
+    Provide an easy way to access the name of the first evolution of the fire starter
+
+    :postcondition: the string Charmander is returned
+    :return: the string Charmander
+    """
     return "Charmander"
 
 
 def is_fire_2():
+    """
+    Provide an easy way to access the name of the second evolution of the fire starter
+
+    :postcondition: the string Charmeleon is returned
+    :return: the string Charmeleon
+    """
     return "Charmeleon"
 
 
 def is_fire_3():
+    """
+    Provide an easy way to access the name of the third evolution of the fire starter
+
+    :postcondition: the string Charizard is returned
+    :return: the string Charizard
+    """
     return "Charizard"
 
 
 def is_water_1():
+    """
+    Provide an easy way to access the name of the first evolution of the water starter
+
+    :postcondition: the string Squirtle is returned
+    :return: the string Squirtle
+    """
     return "Squirtle"
 
 
 def is_water_2():
+    """
+    Provide an easy way to access the name of the second evolution of the water starter
+
+    :postcondition: the string Warturtle is returned
+    :return: the string Warturtle
+    """
     return "Warturtle"
 
 
 def is_water_3():
+    """
+    Provide an easy way to access the name of the third evolution of the water starter
+
+    :postcondition: the string Blastoise is returned
+    :return: the string Blastoise
+    """
     return "Blastoise"
 
 
 def is_grass_1():
+    """
+    Provide an easy way to access the name of the first evolution of the grass starter
+
+    :postcondition: the string Bulbasaur is returned
+    :return: the string Bulbasaur
+    """
     return "Bulbasaur"
 
 
 def is_grass_2():
+    """
+        Provide an easy way to access the name of the second evolution of the grass starter
+
+        :postcondition: the string Ivysaur is returned
+        :return: the string Ivysaur
+        """
     return "Ivysaur"
 
 
 def is_grass_3():
+    """
+    Provide an easy way to access the name of the third evolution of the grass starter
+
+    :postcondition: the string Venasaur is returned
+    :return: the string Venasaur
+    """
     return "Venasaur"
 
 
