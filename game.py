@@ -111,6 +111,7 @@ def get_list_of_wild_grass(board, rows, columns):
     :postcondition: A list will be generated that contains the key value pairs, which represent coordinates on the
                     board, where an enemy may be encountered
     :return: a list called spaces_to_check_for_foe
+
     >>> get_list_of_wild_grass({(0, 0): 'S', (0, 1): 'W', (1, 0): 'S', (1, 1): 'W'}, 2, 2)
     [(0, 1), (1, 1)]
     >>> get_list_of_wild_grass({(0, 0): 'S', (0, 1): 'W', (0, 2): 'W', (1, 0): 'S', (1, 1): 'W', (1, 2): 'S', \
@@ -170,6 +171,13 @@ def make_character():
     :postcondition: A dictionary will be created that contains the names of stat categories as keys and the values of
                     those stats as values
     :return: A dictionary storing character stats
+
+    >>> make_character() #doctest: +SKIP
+    {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0,  "First move": "Tackle",
+    "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_grass_1()}
+    >>> make_character() #doctest: +SKIP
+    {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0, "First move": "Scratch",
+    "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}
     """
     choice = (input("You get a choice between 3 unique Pokemon on your journey.\nThere is Charmander: the fire type "
                     "Pokemon, Squirtle: the water type Pokemon, and Bulbasaur: the grass type Pokemon.\nFire is weak "
