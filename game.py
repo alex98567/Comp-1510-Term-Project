@@ -162,6 +162,15 @@ def make_board(rows, columns):
 
 
 def make_character():
+    """
+    Create a character
+
+    Choose between 3 characters and a dictionary will be created that stores character stats
+
+    :postcondition: A dictionary will be created that contains the names of stat categories as keys and the values of
+                    those stats as values
+    :return: A dictionary storing character stats
+    """
     choice = (input("You get a choice between 3 unique Pokemon on your journey.\nThere is Charmander: the fire type "
                     "Pokemon, Squirtle: the water type Pokemon, and Bulbasaur: the grass type Pokemon.\nFire is weak "
                     "to water and strong against grass. Grass is weak to fire and strong against water. Water is weak "
