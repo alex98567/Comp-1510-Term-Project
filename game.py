@@ -98,6 +98,20 @@ def is_grass_3():
 
 
 def get_list_of_wild_grass(board, rows, columns):
+    """
+    Create a list of the coordinates that may contain enemies
+
+    :param board: a dictionary
+    :param rows: a non negative integer
+    :param columns: a non negative integer
+    :precondition board: board must be a dictionary
+    :precondition rows: rows must be a non negative integer, ideally a 5
+    :precondition columns: columns must be a non negative integer, ideally a 5
+    :precondition board: board must be a dictionary, ideally containing 25 key-value pairs
+    :postcondition: A list will be generated that contains the key value pairs, which represent coordinates on the
+                    board, where an enemy may be encountered
+    :return: a list called spaces_to_check_for_foe
+    """
     spaces_to_check_for_foe = []
     for row in range(rows):
         for column in range(columns):
