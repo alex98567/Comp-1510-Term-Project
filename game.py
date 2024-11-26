@@ -111,6 +111,10 @@ def get_list_of_wild_grass(board, rows, columns):
     :postcondition: A list will be generated that contains the key value pairs, which represent coordinates on the
                     board, where an enemy may be encountered
     :return: a list called spaces_to_check_for_foe
+    >>> get_list_of_wild_grass([(0, 0), (0, 1), (1, 0), (1, 1)], 2, 2) #doctest: +SKIP
+    [(0, 1), (1, 1)]
+    >>> get_list_of_wild_grass([(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)], 3, 3) #doctest: +SKIP
+    [(0, 1), (0, 2), (1, 1)]
     """
     spaces_to_check_for_foe = []
     for row in range(rows):
