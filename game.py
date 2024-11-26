@@ -135,14 +135,14 @@ def make_board(rows, columns):
     :precondition rows: rows must be a positive non-zero integer
     :precondition columns: columns must be a positive non-zero integer
     :postcondition: create a dictionary of given number of rows and columns stored as keys in board_dictionary
-                    and "Empty Room" stored as the value for each key
+                    and either "Safe area", "Wild grass", or "Pokecenter" stored as the value for each key
     :return: a dictionary of given number of rows and columns that serves as a board
 
     >>> make_board(3, 3) #doctest: +SKIP
-    {(0, 0): 'Empty room', (0, 1): 'Empty room', (0, 2): 'Empty room', (1, 0): 'Empty room', (1, 1): 'Empty room', \
-(1, 2): 'Empty room', (2, 0): 'Empty room', (2, 1): 'Empty room', (2, 2): 'Empty room'}
+    {(0, 0): 'Safe area', (0, 1): 'Safe area', (0, 2): 'Wild grass', (1, 0): 'Safe area', (1, 1): 'Wild grass', \
+(1, 2): 'Wild grass', (2, 0): 'Safe area', (2, 1): 'Wild grass', (2, 2): 'Pokecenter'}
     >>> make_board(2, 2) #doctest: +SKIP
-    {(0, 0): 'Empty room', (0, 1): 'Empty room', (1, 0): 'Empty room', (1, 1): 'Empty room'}
+    {(0, 0): 'Safe area', (0, 1): 'Wild grass', (1, 0): 'Safe area', (1, 1): 'Wild grass'}
     """
     board = {}
     for row in range(rows):
