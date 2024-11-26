@@ -233,6 +233,26 @@ def make_character():
 
 
 def describe_current_location(rows, columns, board, character):
+    """
+    Describe the current location of the character and display stats
+
+    Describe the current location of the character on the board with a grid, legend to understand the grid, and also
+    show the current stats of the character including name, location, current HP, current XP. and move-set
+
+    :param rows: a positive integer
+    :param columns: a positive integer
+    :param board: a dictionary of coordinates on the board and what those spaces contain
+    :param character: a dictionary containing keys of "X-coordinate", "Y-coordinate", "Current HP"
+    :precondition rows: rows must be a positive integer
+    :precondition columns: columns must be a positive integer
+    :precondition board: board must be a dictionary with a tuple of integers as keys and with values of 'Safe area',
+                         'Wild grass', or 'Pokecenter'
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate",
+                             "Current HP" with valid values
+    :postcondition: a grid is generated showing the visual location with a legend for comprehension, as well as a
+                    dictionary containing the names of stats categories as keys and values of those categories as values
+    :return: a string summarizing the character dictionary
+    """
     board_copy = copy.deepcopy(board)
     character_location = (character["X-coordinate"], character["Y-coordinate"])
     print("\nMap:")
