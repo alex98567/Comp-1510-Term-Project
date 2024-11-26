@@ -17,7 +17,7 @@ class Test(TestCase):
         rows = 1
         columns = 1
         actual = make_board(rows, columns)
-        expected = {(0,0): 'Safe area'}
+        expected = {(0, 0): 'Safe area'}
         self.assertEqual(actual, expected)
 
     @patch('random.choice', side_effect=['Safe area', 'Wild grass', 'Safe area', 'Wild grass'])
@@ -35,7 +35,7 @@ class Test(TestCase):
         columns = 3
         actual = make_board(rows, columns)
         expected = {(0, 0): 'Safe area', (0, 1): 'Wild grass', (0, 2): 'Safe area',
-                    (1, 0): 'Wild grass', (1, 1): 'Safe area', (1, 2): 'Wild grass',}
+                    (1, 0): 'Wild grass', (1, 1): 'Safe area', (1, 2): 'Wild grass'}
         self.assertEqual(actual, expected)
 
     @patch('random.choice', side_effect=['Safe area', 'Wild grass', 'Safe area', 'Wild grass', 'Safe area',
