@@ -13,6 +13,9 @@ def is_fire_1():
 
     :postcondition: the string Charmander is returned
     :return: the string Charmander
+
+    >>> is_fire_1()
+    'Charmander'
     """
     return "Charmander"
 
@@ -23,6 +26,9 @@ def is_fire_2():
 
     :postcondition: the string Charmeleon is returned
     :return: the string Charmeleon
+
+    >>> is_fire_2()
+    'Charmeleon'
     """
     return "Charmeleon"
 
@@ -33,6 +39,9 @@ def is_fire_3():
 
     :postcondition: the string Charizard is returned
     :return: the string Charizard
+
+    >>> is_fire_3()
+    'Charizard'
     """
     return "Charizard"
 
@@ -43,6 +52,9 @@ def is_water_1():
 
     :postcondition: the string Squirtle is returned
     :return: the string Squirtle
+
+    >>> is_water_1()
+    'Squirtle'
     """
     return "Squirtle"
 
@@ -53,6 +65,9 @@ def is_water_2():
 
     :postcondition: the string Warturtle is returned
     :return: the string Warturtle
+
+    >>> is_water_2()
+    'Warturtle'
     """
     return "Warturtle"
 
@@ -63,6 +78,9 @@ def is_water_3():
 
     :postcondition: the string Blastoise is returned
     :return: the string Blastoise
+
+    >>> is_water_3()
+    'Blastoise'
     """
     return "Blastoise"
 
@@ -73,17 +91,22 @@ def is_grass_1():
 
     :postcondition: the string Bulbasaur is returned
     :return: the string Bulbasaur
+    >>> is_grass_1()
+    'Bulbasaur'
     """
     return "Bulbasaur"
 
 
 def is_grass_2():
     """
-        Provide an easy way to access the name of the second evolution of the grass starter
+    Provide an easy way to access the name of the second evolution of the grass starter
 
-        :postcondition: the string Ivysaur is returned
-        :return: the string Ivysaur
-        """
+    :postcondition: the string Ivysaur is returned
+    :return: the string Ivysaur
+
+    >>> is_grass_2()
+    'Ivysaur'
+    """
     return "Ivysaur"
 
 
@@ -93,6 +116,9 @@ def is_grass_3():
 
     :postcondition: the string Venasaur is returned
     :return: the string Venasaur
+
+    >>> is_grass_3()
+    'Venasaur'
     """
     return "Venasaur"
 
@@ -201,7 +227,7 @@ def make_character():
         return character
     elif choice == "3":
         print(f"Congratulations! You selected {is_grass_1()}, the grass type Pokemon.")
-        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0,  "First move": "Tackle",
+        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0,  "First move": "f",
                      "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_grass_1()}
         return character
 
