@@ -366,10 +366,14 @@ def move_character(character, direction):
     :postcondition: Your character is moved on the board according to the direction entered
     :return: Character is returned with updated dictionary values to reflect the move
 
-    >>> move_character({"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}, "2")
-    {'X-coordinate': 0, 'Y-coordinate': 1, 'Current HP': 5}
-    >>> move_character({"X-coordinate": 2, "Y-coordinate": 3, "Current HP": 5}, "1")
-    {'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 5}
+    >>> move_character({"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0, "First move": \
+    "Scratch", "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}, "2")
+    {'X-coordinate': 0, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, 'First move': 'Scratch', 'Second move': \
+'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}
+    >>> move_character({"X-coordinate": 2, "Y-coordinate": 2, "Current HP": 50, "Current XP": 0, "First move": \
+    "Scratch", "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}, "1")
+    {'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, 'First move': 'Scratch', 'Second move': \
+'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}
     """
     if direction == "1":
         character["Y-coordinate"] -= 1
