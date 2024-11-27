@@ -480,6 +480,15 @@ def get_opponent_1():
 
 
 def choose_attack_1(character):
+    """
+    Choose what attack to use when level 1
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: user will enter a string that indicates which move they choose to attack with
+    :return: a string
+    """
     attack = input("Press 1 to use " + str(character["First move"]) + ". An incorrect entry will cause your attack to "
                    "miss ")
     return attack
