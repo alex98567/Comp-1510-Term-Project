@@ -447,6 +447,14 @@ def check_for_foes():
 
 
 def get_opponent_1():
+    """
+    Determine which type of enemy Pokemon to fight if user is level 1
+
+    :postcondition: A random integer is determined in range 1 to 3. If integer is a 1, user will battle Magicarp, a
+                    water type. If integer is a 2, user will battle Growlithe, a fire type. If integer is a 3, user will
+                    battle Caterpie, a grass type.
+    :return: A dictionary containing key-value pairs with the names and values of the attributes of the selected Pokemon
+    """
     chance = random.randint(1, 3)
     if chance == 1:
         print("A wild Magicarp has appeared, a water type!")
