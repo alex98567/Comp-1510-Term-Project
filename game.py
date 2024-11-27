@@ -420,6 +420,17 @@ def check_if_ready_for_final_boss(character, rows, columns):
 
 
 def check_for_foes():
+    """
+    Check if there is a foe
+
+    Check if the current location on the board occupied by the character contains a foe. There is a 75% chance of
+    encountering an enemy to battle
+
+    :postcondition: A random integer is generated in range 1 to 4. A True boolean, indicating that there is a foe to
+                    battle, is generated and changed to False if the random integer generated is a 1, signifying that
+                    there is no foe in this location.
+    :return: A boolean indicating whether the current location has a foe or not
+    """
     is_foe = True
 
     chance = random.randint(1, 4)
