@@ -227,7 +227,7 @@ def make_character():
         return character
     elif choice == "3":
         print(f"Congratulations! You selected {is_grass_1()}, the grass type Pokemon.")
-        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0,  "First move": "f",
+        character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0,  "First move": "Tackle",
                      "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_grass_1()}
         return character
 
