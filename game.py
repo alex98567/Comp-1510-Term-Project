@@ -242,13 +242,13 @@ def describe_current_location(rows, columns, board, character):
     :param rows: a positive integer
     :param columns: a positive integer
     :param board: a dictionary of coordinates on the board and what those spaces contain
-    :param character: a dictionary containing keys of "X-coordinate", "Y-coordinate", "Current HP"
+    :param character: a dictionary containing key-value pairs showing attributes
     :precondition rows: rows must be a positive integer
     :precondition columns: columns must be a positive integer
     :precondition board: board must be a dictionary with a tuple of integers as keys and with values of 'Safe area',
                          'Wild grass', or 'Pokecenter'
-    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate",
-                             "Current HP" with valid values
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
     :postcondition: a grid is generated showing the visual location with a legend for comprehension, as well as a
                     dictionary containing the names of stats categories as keys and values of those categories as values
     :return: a string summarizing the character dictionary
@@ -316,12 +316,12 @@ def validate_move(board, character, direction):
     Validate if proposed move keeps the character on the board
 
     :param board: A dictionary of the board's layout
-    :param character: A dictionary of the character's attributes
+    :param character: a dictionary containing key-value pairs showing attributes
     :param direction: A string of the proposed direction to move the character
     :precondition board: Dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", and have valid
                          values for all keys
-    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate",
-                             "Current HP" with valid values
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
     :precondition direction: String must be one of "1", "2", "3", "4"
     :postcondition: A False boolean is generated and then changed to true if the character remains on the board
     :return: A boolean indicating if the move is valid
@@ -358,10 +358,10 @@ def move_character(character, direction):
     """
     Move your character on the board
 
-    :param character: A dictionary of the character's attributes
+    :param character: a dictionary containing key-value pairs showing attributes
     :param direction: A string of the direction the character will be moved
-    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate",
-                             "Current HP" with valid values
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
     :precondition direction: String must be one of "1", "2", "3", "4"
     :postcondition: Your character is moved on the board according to the direction entered
     :return: Character is returned with updated dictionary values to reflect the move
@@ -388,6 +388,20 @@ def move_character(character, direction):
 
 
 def check_if_ready_for_final_boss(character, rows, columns):
+    """
+    Check if the final boss battle should be triggered
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :param rows: a positive integer
+    :param columns: a positive integer
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :precondition rows: rows must be a positive integer
+    :precondition columns: columns must be a positive integer
+    :postcondition: A False boolean will be generated and changed to True if the user is level 3, has 500 XP, and is at
+                    the bottom right square on the board
+    :return: A True or False boolean
+    """
     time_for_boss = False
 
     if (character["X-coordinate"] == (columns - 1) and character["Y-coordinate"] == (rows - 1) and
