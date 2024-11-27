@@ -483,11 +483,18 @@ def choose_attack_1(character):
     """
     Choose what attack to use when level 1
 
-    :param character: a dictionary containing key-value pairs showing attributes
+    :param character: a dictionary containing key-value pairs showing attributes for a level 1 Pokemon
     :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
                              "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
     :postcondition: user will enter a string that indicates which move they choose to attack with
     :return: a string
+
+    >>> choose_attack_1({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}) # doctest: +SKIP
+    '1'
+    >>> choose_attack_1({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}) # doctest: +SKIP
+    '2'
     """
     attack = input("Press 1 to use " + str(character["First move"]) + ". An incorrect entry will cause your attack to "
                    "miss ")
