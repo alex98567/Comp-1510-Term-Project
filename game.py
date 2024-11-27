@@ -430,6 +430,11 @@ def check_for_foes():
                     battle, is generated and changed to False if the random integer generated is a 1, signifying that
                     there is no foe in this location.
     :return: A boolean indicating whether the current location has a foe or not
+
+    >>> check_for_foes() #doctest: +SKIP
+    True
+    >>> check_for_foes() #doctest: +SKIP
+    False
     """
     is_foe = True
 
