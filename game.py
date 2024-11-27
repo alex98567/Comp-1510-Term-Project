@@ -454,6 +454,15 @@ def get_opponent_1():
                     water type. If integer is a 2, user will battle Growlithe, a fire type. If integer is a 3, user will
                     battle Caterpie, a grass type.
     :return: A dictionary containing key-value pairs with the names and values of the attributes of the selected Pokemon
+
+    >>> get_opponent_1() #doctest: +SKIP
+    {"Name": "Magicarp", "Current HP": 25, "First move": "Splash"}
+
+    >>> get_opponent_1() #doctest: +SKIP
+    {"Name": "Growlithe", "Current HP": 25, "First move": "Roar"}
+
+    >>> get_opponent_1() #doctest: +SKIP
+    {"Name": "Caterpie", "Current HP": 25, "First move": "String shot"}
     """
     chance = random.randint(1, 3)
     if chance == 1:
