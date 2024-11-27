@@ -959,6 +959,9 @@ def battle_boss(character):
 
 
 def game():
+    """
+    Drive the game
+    """
     print("Welcome to the world of Pokemon! You are a brand new Pokemon trainer who finds themself in Pallet Town.\n"
           "Your task is to defeat the local Pokemon master to become the best trainer in town.\nTo do this, you must "
           "select the Pokemon that you want to control.\nYour Pokemon will start at level 1 and will evolve when you "
