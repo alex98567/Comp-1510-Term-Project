@@ -401,6 +401,14 @@ def check_if_ready_for_final_boss(character, rows, columns):
     :postcondition: A False boolean will be generated and changed to True if the user is level 3, has 500 XP, and is at
                     the bottom right square on the board
     :return: A True or False boolean
+
+    >>> check_if_ready_for_final_boss({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, \
+    'First move': 'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}, 5, 5)
+    False
+    >>> check_if_ready_for_final_boss({'X-coordinate': 4, 'Y-coordinate': 4, 'Current HP': 150, 'Current XP': 500, \
+    'First move': 'Scratch', 'Second move': 'Ember', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}, \
+    5, 5)
+    True
     """
     time_for_boss = False
 
