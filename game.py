@@ -645,6 +645,13 @@ def get_opponent_3():
                     water type. If integer is a 2, user will battle Entei, a fire type. If integer is a 3, user will
                     battle Groudon, a grass type.
     :return: A dictionary containing key-value pairs with the names and values of the attributes of the selected Pokemon
+
+    >>> get_opponent_3() # doctest: +SKIP
+    {"Name": "Kyogre", "Current HP": 100, "First move": "Surf"}
+    >>> get_opponent_3() # doctest: +SKIP
+    {"Name": "Entei", "Current HP": 100, "First move": "Flamethrower"}
+    >>> get_opponent_3() # doctest: +SKIP
+    {"Name": "Groudon", "Current HP": 100, "First move": "Frenzy plant"}
     """
     chance = random.randint(1, 3)
     if chance == 1:
