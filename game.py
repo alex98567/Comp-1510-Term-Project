@@ -607,10 +607,12 @@ def choose_attack_2(character):
     :return: a string
 
     >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 200, 'First move': \
-    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) \
+    # doctest: +SKIP
     '1'
     >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 200, 'First move': \
-    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) \
+    # doctest: +SKIP
     '2'
     """
     attack = input("Press 1 to use " + str(character["First move"]) + " or 2 to use " + str(character["Second move"]) +
@@ -636,6 +638,14 @@ def validate_attack_2(attack):
 
 
 def get_opponent_3():
+    """
+    Determine which type of enemy Pokemon to fight if user is level 3
+
+    :postcondition: A random integer is determined in range 1 to 3. If integer is a 1, user will battle Kyogre, a
+                    water type. If integer is a 2, user will battle Entei, a fire type. If integer is a 3, user will
+                    battle Groudon, a grass type.
+    :return: A dictionary containing key-value pairs with the names and values of the attributes of the selected Pokemon
+    """
     chance = random.randint(1, 3)
     if chance == 1:
         print("A wild Kyogre has appeared, a water type! Be careful, this high level pokemon uses a water move.")
