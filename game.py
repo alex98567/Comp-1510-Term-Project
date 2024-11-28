@@ -701,6 +701,11 @@ def validate_attack_3(attack):
     :precondition attack: attack must be a string
     :postcondition: a True boolean will be returned if the string is '3'. Otherwise, it will return False
     :return: a boolean indicating if the Third move was chosen as an attack
+
+    >>> validate_attack_3('3')
+    True
+    >>> validate_attack_3('2')
+    False
     """
     return attack == "3"
 
