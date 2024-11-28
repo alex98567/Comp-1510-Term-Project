@@ -626,6 +626,11 @@ def validate_attack_2(attack):
     :precondition attack: attack must be a string
     :postcondition: a True boolean will be returned if the string is '2'. Otherwise, it will return False
     :return: a boolean indicating if the Second move was chosen as an attack
+
+    >>> validate_attack_2('1')
+    False
+    >>> validate_attack_2('2')
+    True
     """
     return attack == "2"
 
