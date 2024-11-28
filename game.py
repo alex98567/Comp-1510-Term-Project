@@ -566,6 +566,14 @@ def battle_1(character):
 
 
 def get_opponent_2():
+    """
+    Determine which type of enemy Pokemon to fight if user is level 2
+
+    :postcondition: A random integer is determined in range 1 to 3. If integer is a 1, user will battle Vaporeon, a
+                    water type. If integer is a 2, user will battle Flareon, a fire type. If integer is a 3, user will
+                    battle Leafeon, a grass type.
+    :return: A dictionary containing key-value pairs with the names and values of the attributes of the selected Pokemon
+    """
     chance = random.randint(1, 3)
     if chance == 1:
         print("A wild Vaporeon has appeared, a water type! Be careful, this pokemon uses a water move.")
