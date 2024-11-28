@@ -573,6 +573,13 @@ def get_opponent_2():
                     water type. If integer is a 2, user will battle Flareon, a fire type. If integer is a 3, user will
                     battle Leafeon, a grass type.
     :return: A dictionary containing key-value pairs with the names and values of the attributes of the selected Pokemon
+
+    >>> get_opponent_2() # doctest: +SKIP
+    {"Name": "Vaporeon", "Current HP": 60, "First move": "Bubble"}
+    >>> get_opponent_2() # doctest: +SKIP
+    {"Name": "Flareon", "Current HP": 60, "First move": "Blast burn"}
+    >>> get_opponent_2() # doctest: +SKIP
+    {"Name": "Leafeon", "Current HP": 60, "First move": "Razor leaf"}
     """
     chance = random.randint(1, 3)
     if chance == 1:
