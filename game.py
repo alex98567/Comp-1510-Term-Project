@@ -677,6 +677,15 @@ def choose_attack_3(character):
                              "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
     :postcondition: user will enter a string that indicates which move they choose to attack with
     :return: a string
+
+    >>> choose_attack_3({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 150, 'Current XP': 500, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}) \
+    # doctest: +SKIP
+    '1'
+    >>> choose_attack_3({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 150, 'Current XP': 500, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}) \
+    # doctest: +SKIP
+    '3'
     """
     attack = input("Press 1 to use " + str(character["First move"]) + ", 2 to use " + str(character["Second move"]) +
                    ", or 3 to use " + str(character["Third move"]) + ". An incorrect entry will cause your attack to "
