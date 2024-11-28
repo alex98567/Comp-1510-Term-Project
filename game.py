@@ -537,6 +537,9 @@ def opponent_is_alive(opponent):
 
 
 def battle_1(character):
+    """
+    Drive the battle
+    """
     opponent = get_opponent_1()
     while is_alive(character) and opponent_is_alive(opponent):
         if is_alive(character):
@@ -616,6 +619,9 @@ def validate_attack_3(attack):
 
 
 def battle_2(character):
+    """
+    Drive the battle
+    """
     opponent = get_opponent_2()
     while is_alive(character) and opponent_is_alive(opponent):
         if is_alive(character):
@@ -736,6 +742,9 @@ def battle_2(character):
 
 
 def battle_3(character):
+    """
+    Drive the battle
+    """
     opponent = get_opponent_3()
     while is_alive(character) and opponent_is_alive(opponent):
         if is_alive(character):
@@ -1007,6 +1016,9 @@ def evolve_level_3(character):
 
 
 def battle_boss(character):
+    """
+    Drive the final boss battle
+    """
     print("Your final test awaits! You have done well to get this far and are now challenging the Pokemon master. "
           "\nHe sends out the legendary Mewtwo! Mewtwo has 150 HP and is a Psychic type. Psychic types have no "
           "type advantage and all of your moves will do their natural damage. \nOne incorrect move will likely mean "
