@@ -509,6 +509,11 @@ def validate_attack_1(attack):
     :precondition attack: attack must be a string
     :postcondition: a True boolean will be returned if the string is '1'. Otherwise, it will return False
     :return: a boolean indicating if the First move was chosen as an attack
+
+    >>> validate_attack_1('1')
+    True
+    >>> validate_attack_1('2')
+    False
     """
     return attack == "1"
 
