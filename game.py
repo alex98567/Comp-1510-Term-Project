@@ -600,7 +600,7 @@ def choose_attack_2(character):
     """
     Choose what attack to use when level 2
 
-    :param character: a dictionary containing key-value pairs showing attributes for a level 1 Pokemon
+    :param character: a dictionary containing key-value pairs showing attributes for a level 2 Pokemon
     :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
                              "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
     :postcondition: user will enter a string that indicates which move they choose to attack with
@@ -669,6 +669,15 @@ def get_opponent_3():
 
 
 def choose_attack_3(character):
+    """
+    Choose what attack to use when level 3
+
+    :param character: a dictionary containing key-value pairs showing attributes for a level 3 Pokemon
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: user will enter a string that indicates which move they choose to attack with
+    :return: a string
+    """
     attack = input("Press 1 to use " + str(character["First move"]) + ", 2 to use " + str(character["Second move"]) +
                    ", or 3 to use " + str(character["Third move"]) + ". An incorrect entry will cause your attack to "
                    "miss.")
