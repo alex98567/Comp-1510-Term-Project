@@ -502,6 +502,14 @@ def choose_attack_1(character):
 
 
 def validate_attack_1(attack):
+    """
+    Validate that the chosen attack is one of the characters valid moves
+
+    :param attack: a string
+    :precondition attack: attack must be a string
+    :postcondition: a True boolean will be returned if the string is '1'. Otherwise, it will return False
+    :return: a boolean indicating if the First move was chosen as an attack
+    """
     return attack == "1"
 
 
