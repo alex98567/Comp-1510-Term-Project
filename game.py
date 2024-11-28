@@ -1008,6 +1008,16 @@ def battle_3(character):
 
 
 def is_alive(character):
+    """
+    Check if the user Pokemon still has HP
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: a True boolean will be returned if the user Pokemon has a "Current HP" attribute that is greater
+                    than zero. Otherwise, it will return False
+    :return: a boolean indicating whether the user has HP or not
+    """
     return character["Current HP"] > 0
 
 
