@@ -503,7 +503,7 @@ def choose_attack_1(character):
 
 def validate_attack_1(attack):
     """
-    Validate that the chosen attack is a valid attack for your level 1 Pokemon
+    Validate that the user has chosen the First move attack
 
     :param attack: a string
     :precondition attack: attack must be a string
