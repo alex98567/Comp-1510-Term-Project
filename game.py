@@ -1017,6 +1017,13 @@ def is_alive(character):
     :postcondition: a True boolean will be returned if the user Pokemon has a "Current HP" attribute that is greater
                     than zero. Otherwise, it will return False
     :return: a boolean indicating whether the user has HP or not
+
+    >>> is_alive({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 150, 'Current XP': 500, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'})
+    True
+    >>> is_alive({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 0, 'Current XP': 500, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'})
+    False
     """
     return character["Current HP"] > 0
 
