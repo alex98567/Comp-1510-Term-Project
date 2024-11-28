@@ -606,11 +606,11 @@ def choose_attack_2(character):
     :postcondition: user will enter a string that indicates which move they choose to attack with
     :return: a string
 
-    >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 0, 'First move': \
-    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
+    >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 200, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
     '1'
-    >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 0, 'First move': \
-    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
+    >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 200, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
     '2'
     """
     attack = input("Press 1 to use " + str(character["First move"]) + " or 2 to use " + str(character["Second move"]) +
