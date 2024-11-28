@@ -619,6 +619,14 @@ def choose_attack_2(character):
 
 
 def validate_attack_2(attack):
+    """
+    Validate that the user has chosen the Second move attack
+
+    :param attack: a string
+    :precondition attack: attack must be a string
+    :postcondition: a True boolean will be returned if the string is '2'. Otherwise, it will return False
+    :return: a boolean indicating if the Second move was chosen as an attack
+    """
     return attack == "2"
 
 
