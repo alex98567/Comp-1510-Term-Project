@@ -519,6 +519,15 @@ def validate_attack_1(attack):
 
 
 def opponent_is_alive(opponent):
+    """
+    Check if the opponent still has HP
+
+    :param opponent: a dictionary of the opponents attributes
+    :precondition opponent: opponent must be a dictionary of the opponents attributes
+    :postcondition: a True boolean will be returned if the opponent has a "Current HP" attribute that is greater than
+                    zero. Otherwise, it will return False
+    :return: a boolean indicating whether the opponent still has HP
+    """
     return opponent["Current HP"] > 0
 
 
