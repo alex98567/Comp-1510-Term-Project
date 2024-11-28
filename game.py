@@ -527,6 +527,11 @@ def opponent_is_alive(opponent):
     :postcondition: a True boolean will be returned if the opponent has a "Current HP" attribute that is greater than
                     zero. Otherwise, it will return False
     :return: a boolean indicating whether the opponent still has HP
+
+    >>> opponent_is_alive({'Name': 'Caterpie', 'Current HP': 25, 'First move': 'String shot'})
+    True
+    >>> opponent_is_alive({'Name': 'Caterpie', 'Current HP': 0, 'First move': 'String shot'})
+    False
     """
     return opponent["Current HP"] > 0
 
