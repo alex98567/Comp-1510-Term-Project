@@ -609,7 +609,7 @@ def choose_attack_2(character):
     >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 0, 'First move': \
     'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
     '1'
-    >>> choose_attack_1({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 0, 'First move': \
+    >>> choose_attack_2({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 100, 'Current XP': 0, 'First move': \
     'Scratch', 'Second move': 'Flamethrower', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmeleon'}) # doctest: +SKIP
     '2'
     """
