@@ -5,6 +5,10 @@ A01309729
 
 import random
 import copy
+from colorama import Fore, init, Style
+
+
+init(autoreset=True)
 
 
 def is_fire_1():
@@ -14,10 +18,11 @@ def is_fire_1():
     :postcondition: the string Charmander is returned
     :return: the string Charmander
 
-    >>> is_fire_1()
+    >>> is_fire_1() #doctest: +SKIP
     'Charmander'
     """
-    return "Charmander"
+    charmander = Fore.RED + "Charmander" + Style.RESET_ALL
+    return charmander
 
 
 def is_fire_2():
@@ -27,10 +32,11 @@ def is_fire_2():
     :postcondition: the string Charmeleon is returned
     :return: the string Charmeleon
 
-    >>> is_fire_2()
+    >>> is_fire_2() #doctest: +SKIP
     'Charmeleon'
     """
-    return "Charmeleon"
+    charmeleon = Fore.RED + "Charmeleon" + Style.RESET_ALL
+    return charmeleon
 
 
 def is_fire_3():
@@ -40,10 +46,11 @@ def is_fire_3():
     :postcondition: the string Charizard is returned
     :return: the string Charizard
 
-    >>> is_fire_3()
+    >>> is_fire_3() #doctest: +SKIP
     'Charizard'
     """
-    return "Charizard"
+    charizard = Fore.RED + "Charizard" + Style.RESET_ALL
+    return charizard
 
 
 def is_water_1():
@@ -53,10 +60,11 @@ def is_water_1():
     :postcondition: the string Squirtle is returned
     :return: the string Squirtle
 
-    >>> is_water_1()
+    >>> is_water_1() #doctest: +SKIP
     'Squirtle'
     """
-    return "Squirtle"
+    squirtle = Fore.BLUE + "Squirtle" + Style.RESET_ALL
+    return squirtle
 
 
 def is_water_2():
@@ -66,10 +74,11 @@ def is_water_2():
     :postcondition: the string Warturtle is returned
     :return: the string Warturtle
 
-    >>> is_water_2()
+    >>> is_water_2() #doctest: +SKIP
     'Warturtle'
     """
-    return "Warturtle"
+    warturtle = Fore.BLUE + "Warturtle" + Style.RESET_ALL
+    return warturtle
 
 
 def is_water_3():
@@ -79,10 +88,11 @@ def is_water_3():
     :postcondition: the string Blastoise is returned
     :return: the string Blastoise
 
-    >>> is_water_3()
+    >>> is_water_3() #doctest: +SKIP
     'Blastoise'
     """
-    return "Blastoise"
+    blastoise = Fore.BLUE + "Blastoise" + Style.RESET_ALL
+    return blastoise
 
 
 def is_grass_1():
@@ -91,10 +101,12 @@ def is_grass_1():
 
     :postcondition: the string Bulbasaur is returned
     :return: the string Bulbasaur
-    >>> is_grass_1()
+
+    >>> is_grass_1() #doctest: +SKIP
     'Bulbasaur'
     """
-    return "Bulbasaur"
+    bulbasaur = Fore.GREEN + "Bulbasaur" + Style.RESET_ALL
+    return bulbasaur
 
 
 def is_grass_2():
@@ -104,10 +116,11 @@ def is_grass_2():
     :postcondition: the string Ivysaur is returned
     :return: the string Ivysaur
 
-    >>> is_grass_2()
+    >>> is_grass_2() #doctest: +SKIP
     'Ivysaur'
     """
-    return "Ivysaur"
+    ivysaur = Fore.GREEN + "Ivysaur" + Style.RESET_ALL
+    return ivysaur
 
 
 def is_grass_3():
@@ -117,10 +130,11 @@ def is_grass_3():
     :postcondition: the string Venasaur is returned
     :return: the string Venasaur
 
-    >>> is_grass_3()
+    >>> is_grass_3() #doctest: +SKIP
     'Venasaur'
     """
-    return "Venasaur"
+    venasaur = Fore.GREEN + "Venasaur" + Style.RESET_ALL
+    return venasaur
 
 
 def get_list_of_wild_grass(board, rows, columns):
@@ -211,7 +225,8 @@ def make_character():
                     "to grass and strong against fire.\nFor example, water attacks will do less damage to grass "
                     "Pokemon, but more damage to fire Pokemon.\nYou will not be able to change your selection. You "
                     "will start with 50 HP and the game will end if your Pokemon loses all of their health.\nEnter 1 "
-                    "to choose Charmander, 2 to choose Squirtle, or 3 to choose Bulbasaur. "))
+                    "to choose " + is_fire_1() + ", 2 to choose " + is_water_1() + ", or 3 to choose " + is_grass_1() +
+                    ". "))
     while choice not in ["1", "2", "3"]:
         print("This is not a valid selection.\n")
         choice = (input("Enter 1 to choose Charmander, 2 to choose Squirtle, or 3 to choose Bulbasaur. "))
@@ -367,11 +382,11 @@ def move_character(character, direction):
     :return: Character is returned with updated dictionary values to reflect the move
 
     >>> move_character({"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 50, "Current XP": 0, "First move": \
-    "Scratch", "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}, "2")
+    "Scratch", "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": "Charmander"}, "2")
     {'X-coordinate': 0, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, 'First move': 'Scratch', 'Second move': \
 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}
     >>> move_character({"X-coordinate": 2, "Y-coordinate": 2, "Current HP": 50, "Current XP": 0, "First move": \
-    "Scratch", "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": is_fire_1()}, "1")
+    "Scratch", "Second move": "none", "Third move": "none", "Level": 1, "Pokemon": "Charmander"}, "1")
     {'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 50, 'Current XP': 0, 'First move': 'Scratch', 'Second move': \
 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}
     """
@@ -466,16 +481,17 @@ def get_opponent_1():
     """
     chance = random.randint(1, 3)
     if chance == 1:
-        print("A wild Magicarp has appeared, a water type!")
-        magicarp = {"Name": "Magicarp", "Current HP": 25, "First move": "Splash"}
+        print("A wild " + Fore.LIGHTBLUE_EX + "Magicarp" + Style.RESET_ALL + " has appeared, a water type!")
+        magicarp = {"Name": Fore.LIGHTBLUE_EX + "Magicarp" + Style.RESET_ALL, "Current HP": 25, "First move": "Splash"}
         return magicarp
     if chance == 2:
-        print("A wild Growlithe has appeared, a fire type!")
-        growlithe = {"Name": "Growlithe", "Current HP": 25, "First move": "Roar"}
+        print("A wild " + Fore.LIGHTRED_EX + "Growlithe" + Style.RESET_ALL + " has appeared, a fire type!")
+        growlithe = {"Name": Fore.LIGHTRED_EX + "Growlithe" + Style.RESET_ALL, "Current HP": 25, "First move": "Roar"}
         return growlithe
     if chance == 3:
-        print("A wild Caterpie has appeared, a grass type!")
-        caterpie = {"Name": "Caterpie", "Current HP": 25, "First move": "String shot"}
+        print("A wild " + Fore.LIGHTGREEN_EX + "Caterpie" + Style.RESET_ALL + " has appeared, a grass type!")
+        caterpie = {"Name": Fore.LIGHTGREEN_EX + "Caterpie" + Style.RESET_ALL, "Current HP": 25, "First move":
+                    "String shot"}
         return caterpie
 
 
@@ -583,16 +599,21 @@ def get_opponent_2():
     """
     chance = random.randint(1, 3)
     if chance == 1:
-        print("A wild Vaporeon has appeared, a water type! Be careful, this pokemon uses a water move.")
-        vaporeon = {"Name": "Vaporeon", "Current HP": 60, "First move": "Bubble"}
+        print("A wild " + Fore.LIGHTBLUE_EX + "Vaporeon" + Style.RESET_ALL + " has appeared, a water type! Be careful, "
+                                                                             "this pokemon uses a water move.")
+        vaporeon = {"Name": Fore.LIGHTBLUE_EX + "Vaporeon" + Style.RESET_ALL, "Current HP": 60, "First move": "Bubble"}
         return vaporeon
     if chance == 2:
-        print("A wild Flareon has appeared, a fire type! Be careful, this pokemon uses a fire move.")
-        flareon = {"Name": "Flareon", "Current HP": 60, "First move": "Blast burn"}
+        print("A wild " + Fore.LIGHTRED_EX + "Flareon" + Style.RESET_ALL + " has appeared, a fire type! Be careful, "
+                                                                           "this pokemon uses a fire move.")
+        flareon = {"Name": Fore.LIGHTRED_EX + "Flareon" + Style.RESET_ALL, "Current HP": 60, "First move":
+                   "Blast burn"}
         return flareon
     if chance == 3:
-        print("A wild Leafeon has appeared, a grass type! Be careful, this pokemon uses a grass move")
-        leafeon = {"Name": "Leafeon", "Current HP": 60, "First move": "Razor leaf"}
+        print("A wild " + Fore.LIGHTGREEN_EX + "Leafeon" + Style.RESET_ALL + " has appeared, a grass type! Be careful, "
+                                                                             "this pokemon uses a grass move")
+        leafeon = {"Name": Fore.LIGHTGREEN_EX + "Leafeon" + Style.RESET_ALL, "Current HP": 60, "First move":
+                   "Razor leaf"}
         return leafeon
 
 
@@ -655,16 +676,20 @@ def get_opponent_3():
     """
     chance = random.randint(1, 3)
     if chance == 1:
-        print("A wild Kyogre has appeared, a water type! Be careful, this high level pokemon uses a water move.")
-        kyogre = {"Name": "Kyogre", "Current HP": 100, "First move": "Surf"}
+        print("A wild " + Fore.LIGHTBLUE_EX + "Kyogre" + Style.RESET_ALL + " has appeared, a water type! Be careful, "
+                                                                           "this high level pokemon uses a water move.")
+        kyogre = {"Name": Fore.LIGHTBLUE_EX + "Kyogre" + Style.RESET_ALL, "Current HP": 100, "First move": "Surf"}
         return kyogre
     if chance == 2:
-        print("A wild Entei has appeared, a fire type! Be careful, this high level pokemon uses a fire move.")
-        entei = {"Name": "Entei", "Current HP": 100, "First move": "Flamethrower"}
+        print("A wild " + Fore.LIGHTRED_EX + "Entei" + Style.RESET_ALL + " has appeared, a fire type! Be careful, "
+                                                                         "this high level pokemon uses a fire move.")
+        entei = {"Name": Fore.LIGHTRED_EX + "Entei" + Style.RESET_ALL, "Current HP": 100, "First move": "Flamethrower"}
         return entei
     if chance == 3:
-        print("A wild Groudon has appeared, a grass type! Be careful, this high level pokemon uses a grass move")
-        groudon = {"Name": "Groudon", "Current HP": 100, "First move": "Frenzy plant"}
+        print("A wild " + Fore.LIGHTGREEN_EX + "Groudon" + Style.RESET_ALL + " has appeared, a grass type! Be careful, "
+              "this high level pokemon uses a grass move")
+        groudon = {"Name": Fore.LIGHTGREEN_EX + "Groudon" + Style.RESET_ALL, "Current HP": 100, "First move":
+                   "Frenzy plant"}
         return groudon
 
 
@@ -1057,8 +1082,8 @@ def evolve_level_2(character):
         character["Second move"] = "Ember"
         character["Current HP"] = 100
         character["Level"] = 2
-        print("\nWow! You reached level 2 and your " + str(is_fire_1()) + " has evolved into a " + str(is_fire_2()) +
-              "!")
+        print("\n" + Fore.YELLOW + "Wow! You reached level 2 " + Style.RESET_ALL + " and your " + str(is_fire_1()) +
+              " has evolved into a " + str(is_fire_2()) + "!")
         print(str(is_fire_2()) + " learned ember, a fire type move! Remember what you have learned about move types.")
         print(str(is_fire_2()) + " now has 100 HP instead of 50.")
     elif character["Pokemon"] == is_grass_1():
@@ -1066,8 +1091,8 @@ def evolve_level_2(character):
         character["Second move"] = "Vine whip"
         character["Current HP"] = 100
         character["Level"] = 2
-        print("\nWow! You reached level 2 and your " + str(is_grass_1()) + " has evolved into an " + str(is_grass_2()) +
-              "!")
+        print("\n" + Fore.YELLOW + "Wow! You reached level 2 " + Style.RESET_ALL + " and your " + str(is_grass_1()) +
+              " has evolved into an " + str(is_grass_2()) + "!")
         print(str(is_grass_2()) + " learned vine whip, a grass type move! Remember what you have learned about move "
                                   "types.")
         print(str(is_grass_2()) + " now has 100 HP instead of 50.")
@@ -1076,8 +1101,8 @@ def evolve_level_2(character):
         character["Second move"] = "Water gun"
         character["Current HP"] = 100
         character["Level"] = 2
-        print("\nWow! You reached level 2 and your " + str(is_water_1()) + " has evolved into a " + str(is_water_2()) +
-              "!")
+        print("\n" + Fore.YELLOW + "Wow! You reached level 2 " + Style.RESET_ALL + " and your " + str(is_water_1()) +
+              " has evolved into a " + str(is_water_2()) + "!")
         print(str(is_water_2()) + " learned water gun, a water type move! Remember what you have learned about move "
                                   "types.")
         print(str(is_water_2()) + " now has 100 HP instead of 50.")
@@ -1092,8 +1117,8 @@ def evolve_level_3(character):
         character["Third move"] = "Fire blast"
         character["Current HP"] = 150
         character["Level"] = 3
-        print("\nWow! You reached level 3 and your " + str(is_fire_2()) + " has evolved into a " + str(is_fire_3()) +
-              "!")
+        print("\n" + Fore.YELLOW + "Wow! You reached level 3 " + Style.RESET_ALL + " and your " + str(is_fire_2()) +
+              " has evolved into a " + str(is_fire_3()) + "!")
         print(str(is_fire_3()) + " learned Fire blast, a fire type move! Remember what you have learned about move "
                                  "types.")
         print(str(is_fire_3()) + " now has 150 HP instead of 10.")
@@ -1102,8 +1127,8 @@ def evolve_level_3(character):
         character["Second move"] = "Solarbeam"
         character["Current HP"] = 150
         character["Level"] = 3
-        print("\nWow! You reached level 3 and your " + str(is_grass_2()) + " has evolved into a " + str(is_grass_3()) +
-              "!")
+        print("\n" + Fore.YELLOW + "Wow! You reached level 3 " + Style.RESET_ALL + " and your " + str(is_grass_2()) +
+              " has evolved into a " + str(is_grass_3()) + "!")
         print(str(is_grass_2()) + " learned Solarbeam, a grass type move! Remember what you have learned about move "
                                   "types.")
         print(str(is_grass_2()) + " now has 150 HP instead of 100.")
@@ -1112,8 +1137,8 @@ def evolve_level_3(character):
         character["Second move"] = "Hydro pump"
         character["Current HP"] = 150
         character["Level"] = 3
-        print("\nWow! You reached level 3 and your " + str(is_water_2()) + " has evolved into a " + str(is_water_3()) +
-              "!")
+        print("\n" + Fore.YELLOW + "Wow! You reached level 3 " + Style.RESET_ALL + " and your " + str(is_water_2()) +
+              " has evolved into a " + str(is_water_3()) + "!")
         print(str(is_water_2()) + " learned Hydro pump, a water type move! Remember what you have learned about move "
                                   "types.")
         print(str(is_water_2()) + " now has 150 HP instead of 100.")
@@ -1129,10 +1154,11 @@ def battle_boss(character):
     Drive the final boss battle
     """
     print("Your final test awaits! You have done well to get this far and are now challenging the Pokemon master. "
-          "\nHe sends out the legendary Mewtwo! Mewtwo has 150 HP and is a Psychic type. Psychic types have no "
-          "type advantage and all of your moves will do their natural damage. \nOne incorrect move will likely mean "
-          "defeat. Good luck!")
-    mewtwo = {"Name": "Mewtwo", "Current HP": 150, "First move": "Psybeam"}
+          "\nHe sends out the legendary " + Fore.LIGHTMAGENTA_EX + "Mewtwo" + Style.RESET_ALLMewtwo + "! " +
+          Fore.LIGHTMAGENTA_EX + "Mewtwo" + Style.RESET_ALLMewtwo + " has 150 HP and is a Psychic type. Psychic types "
+          "have no type advantage and all of your moves will do their natural damage. \nOne incorrect move will likely "
+          "mean defeat. Good luck!")
+    mewtwo = {"Name": Fore.LIGHTMAGENTA_EX + "Mewtwo" + Style.RESET_ALL, "Current HP": 150, "First move": "Psybeam"}
     opponent = mewtwo
     character["Current HP"] = 150
     while is_alive(character) and opponent_is_alive(opponent):

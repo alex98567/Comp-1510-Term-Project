@@ -1,6 +1,5 @@
 from unittest import TestCase
 from game import describe_current_location
-from game import is_fire_1, is_fire_2, is_fire_3, is_grass_1, is_grass_2, is_grass_3, is_water_1, is_water_2, is_water_3
 
 
 class Test(TestCase):
@@ -16,7 +15,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 0, "Y-coordinate": 0,
                                            "Current HP": 50, "Current XP": 0, "First move": "Scratch",
                                                           "Second move": "none", "Third move": "none", "Level": 1,
-                                                          "Pokemon": is_fire_1()})
+                                                          "Pokemon": "Charmander"})
         expected = ('Charmander is currently located at space (0, 0)\nCurrent HP is 50\nCurrent level is 1\nCurrent XP '
                     'is 0\nFirst move is Scratch')
         self.assertEqual(actual, expected)
@@ -33,7 +32,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 3, "Y-coordinate": 2,
                                            "Current HP": 100, "Current XP": 100, "First move": "Scratch",
                                                           "Second move": "Ember", "Third move": "none", "Level": 2,
-                                                          "Pokemon": is_fire_2()})
+                                                          "Pokemon": "Charmeleon"})
         expected = ('Charmeleon is currently at space (3, 2)\nCurrent HP is 100\nCurrent level is 2\nCurrent XP is '
                     '100\nFirst move is Scratch\nSecond move is Ember')
         self.assertEqual(actual, expected)
@@ -50,7 +49,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 2, "Y-coordinate": 3,
                                            "Current HP": 150, "Current XP": 500, "First move": "Scratch",
                                                           "Second move": "Ember", "Third move": "Fire Blast", "Level":
-                                                          3, "Pokemon": is_fire_3()})
+                                                          3, "Pokemon": "Charizard"})
         expected = ('Charizard is currently located at space (2, 3)\nCurrent HP is 150\nCurrent level is 3\nCurrent XP '
                     'is 500\nFirst move is Scratch\nSecond move is Ember\nThird move is Fire Blast')
         self.assertEqual(actual, expected)
@@ -67,7 +66,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 2, "Y-coordinate": 2,
                                            "Current HP": 50, "Current XP": 0, "First move": "Tackle",
                                                           "Second move": "none", "Third move": "none", "Level": 1,
-                                                          "Pokemon": is_grass_1()})
+                                                          "Pokemon": "Bulbasaur"})
         expected = ('Bulbasaur is currently located at space (2, 2)\nCurrent HP is 50\nCurrent level is 1\nCurrent XP '
                     'is 0\nFirst move is Tackle')
         self.assertEqual(actual, expected)
@@ -84,7 +83,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 1, "Y-coordinate": 4,
                                            "Current HP": 100, "Current XP": 100, "First move": "Tackle",
                                                           "Second move": "Vine whip", "Third move": "none", "Level": 2,
-                                                          "Pokemon": is_grass_2()})
+                                                          "Pokemon": "Ivysaur"})
         expected = ('Ivysaur is currently at space (1, 4)\nCurrent HP is 100\nCurrent level is 2\nCurrent XP '
                     'is 100\nFirst move is Tackle\nSecond move is Vine whip')
         self.assertEqual(actual, expected)
@@ -101,7 +100,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 4, "Y-coordinate": 1,
                                            "Current HP": 150, "Current XP": 500, "First move": "Tackle",
                                                           "Second move": "Vine whip", "Third move": "Solarbeam",
-                                                          "Level": 3, "Pokemon": is_grass_3()})
+                                                          "Level": 3, "Pokemon": "Venasaur"})
         expected = ('Venasaur is currently located at space (4, 1)\nCurrent HP is 150\nCurrent level is 3\nCurrent XP '
                     'is 500\nFirst move is Tackle\nSecond move is Vine whip\nThird move is Solarbeam')
         self.assertEqual(actual, expected)
@@ -118,7 +117,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 4, "Y-coordinate": 4,
                                            "Current HP": 50, "Current XP": 0, "First move": "Bite",
                                                           "Second move": "none", "Third move": "none", "Level": 1,
-                                                          "Pokemon": is_water_1()})
+                                                          "Pokemon": "Squirtle"})
         expected = ('Squirtle is currently located at space (4, 4)\nCurrent HP is 50\nCurrent level is 1\nCurrent XP '
                     'is 0\nFirst move is Bite')
         self.assertEqual(actual, expected)
@@ -135,7 +134,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 0, "Y-coordinate": 3,
                                            "Current HP": 100, "Current XP": 100, "First move": "Bite",
                                                           "Second move": "Water gun", "Third move": "none", "Level": 2,
-                                                          "Pokemon": is_water_2()})
+                                                          "Pokemon": "Warturtle"})
         expected = ('Warturtle is currently at space (0, 3)\nCurrent HP is 100\nCurrent level is 2\nCurrent XP '
                     'is 100\nFirst move is Bite\nSecond move is Water gun')
         self.assertEqual(actual, expected)
@@ -152,7 +151,7 @@ class Test(TestCase):
                                            'Safe area'}, {"X-coordinate": 3, "Y-coordinate": 0,
                                            "Current HP": 150, "Current XP": 500, "First move": "Bite",
                                                           "Second move": "Water gun", "Third move": "Hydro cannon",
-                                                          "Level": 3, "Pokemon": is_water_3()})
+                                                          "Level": 3, "Pokemon": "Blastoise"})
         expected = ('Blastoise is currently located at space (3, 0)\nCurrent HP is 150\nCurrent level is 3\nCurrent XP '
                     'is 500\nFirst move is Bite\nSecond move is Water gun\nThird move is Hydro cannon')
         self.assertEqual(actual, expected)
