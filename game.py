@@ -1054,6 +1054,25 @@ def is_alive(character):
 
 
 def is_pokecenter(character):
+    """
+    Check if the user Pokemon is located at the Pokecenter and restore health to max if they are
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: if the user Pokemon is located at the Pokecenter, their "Current HP" will be restored to full
+    :return: Either a character with full "Current HP" or with their current HP
+
+    >>> is_pokecenter({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 94, 'Current XP': 500, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'})
+    {'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 94, 'Current XP': 500, 'First move': 'Scratch', 'Second move': \
+'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}
+    >>> is_pokecenter({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 94, 'Current XP': 500, 'First move': \
+    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'})
+    You have reached the Pokecenter and your Charizard has full health again!
+    {'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 150, 'Current XP': 500, 'First move': 'Scratch', 'Second move': \
+'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}
+    """
     if character["Level"] == 1 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
         character["Current HP"] = 50
         print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
@@ -1065,6 +1084,8 @@ def is_pokecenter(character):
     if character["Level"] == 3 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
         character["Current HP"] = 150
         print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        return character
+    else:
         return character
 
 
