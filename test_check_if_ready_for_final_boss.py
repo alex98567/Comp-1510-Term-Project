@@ -27,9 +27,25 @@ class Test(TestCase):
         expected = False
         self.assertEqual(actual, expected)
 
-    def test_check_if_ready_for_final_boss_True_5_5(self):
+    def test_check_if_ready_for_final_boss_False_4_4_499(self):
+        actual = check_if_ready_for_final_boss({'X-coordinate': 4, 'Y-coordinate': 4, 'Current HP': 150,
+                                                'Current XP': 499, 'First move': 'Scratch', 'Second move': 'Ember',
+                                                'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'},
+                                               5, 5)
+        expected = False
+        self.assertEqual(actual, expected)
+
+    def test_check_if_ready_for_final_boss_True_5_5_500(self):
         actual = check_if_ready_for_final_boss({'X-coordinate': 4, 'Y-coordinate': 4, 'Current HP': 150,
                                                 'Current XP': 500, 'First move': 'Scratch', 'Second move': 'Ember',
+                                                'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'},
+                                               5, 5)
+        expected = True
+        self.assertEqual(actual, expected)
+
+    def test_check_if_ready_for_final_boss_True_5_5_501(self):
+        actual = check_if_ready_for_final_boss({'X-coordinate': 4, 'Y-coordinate': 4, 'Current HP': 150,
+                                                'Current XP': 501, 'First move': 'Scratch', 'Second move': 'Ember',
                                                 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'},
                                                5, 5)
         expected = True
