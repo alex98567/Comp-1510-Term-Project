@@ -1145,7 +1145,7 @@ def evolve_level_2(character):
     {'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 100, 'Current XP': 100, 'First move': 'Scratch', 'Second move': \
 'Ember', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}
 
-    >>> evolve_level_2({'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 33, 'Current XP': 80, 'First move': \
+    >>> evolve_level_2({'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 33, 'Current XP': 100, 'First move': \
     'Bite', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Squirtle'}) #doctest: +SKIP
     {'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 100, 'Current XP': 100, 'First move': 'Bite', 'Second move': \
 'Water gun', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Warturtle'}
@@ -1185,6 +1185,26 @@ def evolve_level_2(character):
 
 
 def evolve_level_3(character):
+    """
+    Level up to level 3 and evolve your starting Pokemon to the third and final evolution
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: user Pokemon has new values for "Current HP", "Third move", and "Pokemon" to reflect the level up
+                    and evolution
+    :return: an updated character dictionary
+
+    >>> evolve_level_3({'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 33, 'Current XP': 400, 'First move': \
+    'Scratch', 'Second move': 'Ember', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}) #doctest: +SKIP
+    {'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 150, 'Current XP': 400, 'First move': 'Scratch', \
+'Second move': 'Ember', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}
+
+    >>> evolve_level_2({'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 33, 'Current XP': 400, 'First move': \
+    'Bite', 'Second move': 'Water gun', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Squirtle'}) #doctest: +SKIP
+    {'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 150, 'Current XP': 400, 'First move': 'Bite', 'Second move': \
+'Water gun', 'Third move': 'Hydro cannon', 'Level': 3, 'Pokemon': 'Blastoise'}
+    """
     if character["Pokemon"] == is_fire_2():
         character["Pokemon"] = is_fire_3()
         character["Third move"] = "Fire blast"
