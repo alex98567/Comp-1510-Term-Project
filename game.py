@@ -1063,38 +1063,70 @@ def is_pokecenter(character):
     :postcondition: if the user Pokemon is located at the Pokecenter, their "Current HP" will be restored to full
     :return: Either a character with full "Current HP" or with their current HP
 
-    >>> is_pokecenter({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 94, 'Current XP': 500, 'First move': \
-    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'})
-    {'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 94, 'Current XP': 500, 'First move': 'Scratch', 'Second move': \
-'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}
-    >>> is_pokecenter({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 94, 'Current XP': 500, 'First move': \
-    'Scratch', 'Second move': 'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'})
-    You have reached the Pokecenter and your Charizard has full health again!
-    {'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 150, 'Current XP': 500, 'First move': 'Scratch', 'Second move': \
-'Flamethrower', 'Third move': 'Fire blast', 'Level': 3, 'Pokemon': 'Charizard'}
+    >>> is_pokecenter({'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 6, 'Current XP': 10, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'})
+    {'X-coordinate': 2, 'Y-coordinate': 1, 'Current HP': 6, 'Current XP': 10, 'First move': 'Scratch', 'Second move': \
+'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}
+    >>> is_pokecenter({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 6, 'Current XP': 10, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'})
+    You have reached the Pokecenter and your Charmander has full health again!
+    {'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 50, 'Current XP': 10, 'First move': 'Scratch', 'Second move': \
+'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}
     """
     if character["Level"] == 1 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
         character["Current HP"] = 50
-        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again!")
         return character
     if character["Level"] == 2 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
         character["Current HP"] = 100
-        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again!")
         return character
     if character["Level"] == 3 and character["X-coordinate"] == 2 and character["Y-coordinate"] == 2:
         character["Current HP"] = 150
-        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again! ")
+        print("You have reached the Pokecenter and your " + character["Pokemon"] + " has full health again!")
         return character
     else:
         return character
 
 
 def is_level_2(character):
-    return character["Current XP"] in range(20, 59)
+    """
+    Check if the user has enough experience to level up to level 2
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: A boolean is generated indicating if the user has enough XP to level up to level 2
+    :return: A boolean indicating if the user has enough experience to level up to level 2
+
+    >>> is_level_2({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 6, 'Current XP': 10, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'})
+    False
+    >>> is_level_2({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 6, 'Current XP': 100, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'})
+    True
+    """
+    return character["Current XP"] in range(100, 399)
 
 
 def is_level_3(character):
-    return character["Current XP"] >= 60
+    """
+    Check if the user has enough experience to level up to level 3
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: A boolean is generated indicating if the user has enough XP to level up to level 3
+    :return: A boolean indicating if the user has enough experience to level up to level 3
+
+    >>> is_level_3({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 6, 'Current XP': 100, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmeleon'})
+    False
+    >>> is_level_3({'X-coordinate': 2, 'Y-coordinate': 2, 'Current HP': 6, 'Current XP': 400, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmeleon'})
+    True
+    """
+    return character["Current XP"] >= 400
 
 
 def evolve_level_2(character):
