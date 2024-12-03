@@ -1217,24 +1217,24 @@ def evolve_level_3(character):
         print(str(is_fire_3()) + " now has 150 HP instead of 10.")
     elif character["Pokemon"] == is_grass_2():
         character["Pokemon"] = is_grass_3()
-        character["Second move"] = "Solarbeam"
+        character["Third move"] = "Solarbeam"
         character["Current HP"] = 150
         character["Level"] = 3
         print("\n" + Fore.YELLOW + "Wow! You reached level 3 " + Style.RESET_ALL + " and your " + str(is_grass_2()) +
               " has evolved into a " + str(is_grass_3()) + "!")
-        print(str(is_grass_2()) + " learned Solarbeam, a grass type move! Remember what you have learned about move "
+        print(str(is_grass_3()) + " learned Solarbeam, a grass type move! Remember what you have learned about move "
                                   "types.")
-        print(str(is_grass_2()) + " now has 150 HP instead of 100.")
+        print(str(is_grass_3()) + " now has 150 HP instead of 100.")
     elif character["Pokemon"] == is_water_2():
         character["Pokemon"] = is_water_3()
-        character["Second move"] = "Hydro pump"
+        character["Third move"] = "Hydro pump"
         character["Current HP"] = 150
         character["Level"] = 3
         print("\n" + Fore.YELLOW + "Wow! You reached level 3 " + Style.RESET_ALL + " and your " + str(is_water_2()) +
               " has evolved into a " + str(is_water_3()) + "!")
-        print(str(is_water_2()) + " learned Hydro pump, a water type move! Remember what you have learned about move "
+        print(str(is_water_3()) + " learned Hydro pump, a water type move! Remember what you have learned about move "
                                   "types.")
-        print(str(is_water_2()) + " now has 150 HP instead of 100.")
+        print(str(is_water_3()) + " now has 150 HP instead of 100.")
     print(str(character["First move"]) + " now does 12 damage. " + str(character["Second move"]) + " naturally "
           "does 13 damage, but will do 16 damage when super effective and only 10 damage when not very effective.\n"
           + str(character["Third move"]) + " naturally does 15 damage.\nIt will do 25 damage when super very "
