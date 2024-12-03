@@ -1106,7 +1106,7 @@ def is_level_2(character):
     'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'})
     True
     """
-    return character["Current XP"] in range(100, 399)
+    return character["Current XP"] in range(100, 400)
 
 
 def is_level_3(character):
@@ -1130,6 +1130,26 @@ def is_level_3(character):
 
 
 def evolve_level_2(character):
+    """
+    Level up to level 2 and evolve your starting Pokemon to the second evolution
+
+    :param character: a dictionary containing key-value pairs showing attributes
+    :precondition character: dictionary must contain keys of "X-coordinate", "Y-coordinate", "Current HP", "Current XP",
+                             "First move", "Second move", "Third move", "Level", and "Pokemon" with valid values for all
+    :postcondition: user Pokemon has new values for "Current HP", "Second move", and "Pokemon" to reflect the level up
+                    and evolution
+    :return: an updated character dictionary
+
+    >>> evolve_level_2({'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 33, 'Current XP': 100, 'First move': \
+    'Scratch', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Charmander'}) #doctest: +SKIP
+    {'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 100, 'Current XP': 100, 'First move': 'Scratch', 'Second move': \
+'Ember', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Charmeleon'}
+
+    >>> evolve_level_2({'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 33, 'Current XP': 80, 'First move': \
+    'Bite', 'Second move': 'none', 'Third move': 'none', 'Level': 1, 'Pokemon': 'Squirtle'}) #doctest: +SKIP
+    {'X-coordinate': 3, 'Y-coordinate': 2, 'Current HP': 100, 'Current XP': 100, 'First move': 'Bite', 'Second move': \
+'Water gun', 'Third move': 'none', 'Level': 2, 'Pokemon': 'Warturtle'}
+    """
     if character["Pokemon"] == is_fire_1():
         character["Pokemon"] = is_fire_2()
         character["Second move"] = "Ember"
