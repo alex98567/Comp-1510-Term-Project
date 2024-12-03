@@ -1,9 +1,5 @@
 from unittest import TestCase
 from game import evolve_level_2, is_grass_2, is_fire_2, is_water_2, is_grass_1, is_fire_1, is_water_1
-from colorama import Style, Fore, init
-
-
-init(autoreset=True)
 
 
 class Test(TestCase):
